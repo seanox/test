@@ -1,5 +1,5 @@
 # Description
-TODO: 
+Extended API for JUnit tests.
 
 
 # Licence Agreement
@@ -28,8 +28,8 @@ TODO:
 
 
 # Downloads
-[Seanox Test 5.0.0](https://github.com/seanox/test/raw/master/releases/seanox-test-1.0.0.zip)  
-[Seanox Test Sources 5.0.0](https://github.com/seanox/test/raw/master/releases/seanox-test-1.0.0-src.zip)  
+[Seanox Test 1.0.0](https://github.com/seanox/test/raw/master/releases/seanox-test-1.0.0.zip)  
+[Seanox Test Sources 1.0.0](https://github.com/seanox/test/raw/master/releases/seanox-test-1.0.0-src.zip)  
 
 
 # Installation
