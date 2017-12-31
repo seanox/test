@@ -3,7 +3,7 @@
  *  im Folgenden Seanox Software Solutions oder kurz Seanox genannt.
  *  Diese Software unterliegt der Version 2 der GNU General Public License.
  *
- *  Seanox Test Utilities
+ *  Seanox Test SDK
  *  Copyright (C) 2017 Seanox Software Solutions
  *
  *  This program is free software; you can redistribute it and/or modify it
@@ -38,7 +38,14 @@ import java.util.List;
  *  ends with the following or the file end.
  *      <dir>Context Sub-Content</dir>
  *  Context with decimal decimal value, separated by an underscore.
- *  Sub-Content can also be used as a set.    
+ *  Sub-Content can also be used as a set.<br>
+ *  <br>
+ *  ResourceUtils 1.0 20171212<br>
+ *  Copyright (C) 2017 Seanox Software Solutions<br>
+ *  Alle Rechte vorbehalten.
+ *
+ *  @author  Seanox Software Solutions
+ *  @version 1.0 20171212
  */
 public class ResourceUtils {
     

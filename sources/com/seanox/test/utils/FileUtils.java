@@ -3,7 +3,7 @@
  *  im Folgenden Seanox Software Solutions oder kurz Seanox genannt.
  *  Diese Software unterliegt der Version 2 der GNU General Public License.
  *
- *  Seanox Test Utilities
+ *  Seanox Test SDK
  *  Copyright (C) 2017 Seanox Software Solutions
  *
  *  This program is free software; you can redistribute it and/or modify it
@@ -29,26 +29,33 @@ import java.io.OutputStream;
 import java.util.regex.Pattern;
 
 /**
- *  Utils for file(system).
+ *  Utils for file(system).<br>
+ *  <br>
+ *  FileUtils 1.0 20171212<br>
+ *  Copyright (C) 2017 Seanox Software Solutions<br>
+ *  Alle Rechte vorbehalten.
+ *
+ *  @author  Seanox Software Solutions
+ *  @version 1.0 20171212
  */
 public class FileUtils {
     
     /**
      *  Writes all bytes of a file in the passed OutputStream.
      *  @param  file
-     *  @param  outputStream
+     *  @param  output
      *  @return the number of transferred bytes
      *  @throws IOException
      *      In case of faulty data access.
      */
-    public static long transmitFile(File file, OutputStream outputStream)
+    public static long transmit(File file, OutputStream output)
             throws IOException {
         
         try (FileInputStream inputStream = new FileInputStream(file)) {
             long volume = 0;
             byte[] bytes = new byte[65535];
             for (int length = 0; (length = inputStream.read(bytes)) >= 0; volume +=length)
-                outputStream.write(bytes, 0, length);
+                output.write(bytes, 0, length);
             return volume;
         }
     }
