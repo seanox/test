@@ -29,7 +29,7 @@ import java.io.OutputStream;
 import java.util.Arrays;
 
 /**
- *  Utils for streams.<br>
+ *  Utilities for streams.<br>
  *  <br>
  *  StreamUtils 1.0 20171212<br>
  *  Copyright (C) 2017 Seanox Software Solutions<br>

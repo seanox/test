@@ -26,7 +26,7 @@ import java.io.InputStream;
 import java.util.Arrays;
 
 /**
- *  Utils for mock data.<br>
+ *  Utilities for mock data.<br>
  *  <br>
  *  MockUtils 1.0 20171212<br>
  *  Copyright (C) 2017 Seanox Software Solutions<br>

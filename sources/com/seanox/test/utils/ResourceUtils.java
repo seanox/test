@@ -28,7 +28,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- *  Utils for resources.
+ *  Utilities for resources.
  *      <dir>Context Content</dir>
  *  This is a simple text content from the ClassPath.<br>
  *  The content is based on a text file (file extension: txt) which is locate

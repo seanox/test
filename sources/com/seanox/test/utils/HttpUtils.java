@@ -47,12 +47,16 @@ import javax.net.ssl.TrustManagerFactory;
  *  <br>
  *  HttpUtils 1.0 20171212<br>
  *  Copyright (C) 2017 Seanox Software Solutions<br>
- *  Alle Rechte vorbehalten.
+ *  All rights reserved.
  *
  *  @author  Seanox Software Solutions
  *  @version 1.0 20171212
  */
 public class HttpUtils {
+    
+    /** Constructor, creates a new HttpUtils object. */
+    private HttpUtils() {
+    }    
     
     /** Selection of header fields */
     public static class HeaderField {

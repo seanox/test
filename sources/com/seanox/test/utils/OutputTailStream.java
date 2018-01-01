@@ -3,7 +3,7 @@
  *  im Folgenden Seanox Software Solutions oder kurz Seanox genannt.
  *  Diese Software unterliegt der Version 2 der GNU General Public License.
  *
- *  Seanox Test Utilities
+ *  Seanox Test SDK
  *  Copyright (C) 2017 Seanox Software Solutions
  *
  *  This program is free software; you can redistribute it and/or modify it
@@ -27,25 +27,44 @@ import java.io.OutputStream;
 
 /**
  *  Data stream filter for querying the latest data (tail).
+ *  The data stream supports two modes.<br>
+ *  
+ *      <dir>1. Bufferd Mode</dir>
+ *  Is initialized via {@link #OutputTailStream(int)}.<br>
+ *  The tail has a maximum length and always contains the last written data.
+ *  
+ *      <dir>2. Dynamic Mode</dir>
+ *  Is initialized via {@link #OutputTailStream()}.<br>
+ *  The length of the tail is dynmic. It always contains the data written since
+ *  the last call of {@link #toByteArray()} and {@link #toString()}. In other
+ *  words, the method {@link #toByteArray()} and {@link #toString()} always
+ *  reset the tail.<br>
+ *  <br>
+ *  OutputTailStream 1.0 20171212<br>
+ *  Copyright (C) 2017 Seanox Software Solutions<br>
+ *  All rights reserved.
+ *
+ *  @author  Seanox Software Solutions
+ *  @version 1.0 20171212
  */
-public class OutputStreamTail extends OutputStream {
+public class OutputTailStream extends OutputStream {
     
     /** data buffer */
-    private volatile ByteArrayOutputStream data;
+    protected volatile ByteArrayOutputStream data;
     
     /** maximum amount of data */
-    private volatile int size;
+    protected volatile int size;
     
     /** Constructor creates a new OutputStreamTail object for 65535 bytes. */
-    public OutputStreamTail() {
-        this(65535);
+    public OutputTailStream() {
+        this.data = new ByteArrayOutputStream(65535);
     }
-    
+
     /**
      *  Constructor creates a new OutputStreamTail object for a amount of data.
      *  @param size
      */
-    public OutputStreamTail(int size) {
+    public OutputTailStream(int size) {
         
         if (size <= 0)
             throw new IllegalArgumentException();
@@ -59,7 +78,8 @@ public class OutputStreamTail extends OutputStream {
         byte[] temp;
         
         synchronized (this.data) {
-            if (this.data.size() >= this.size) {
+            if (this.size > 0
+                    && this.data.size() >= this.size) {
                 temp = this.data.toByteArray();
                 this.data.reset();
                 this.write(temp, 1, temp.length -1);
@@ -72,29 +92,29 @@ public class OutputStreamTail extends OutputStream {
     @Override
     public void write(byte[] data, int offset, int length) throws IOException {
         
-        byte[] temp;
-        
         synchronized (this.data) {
 
-            int size = 0;
-            if (length > this.size)
-                size = Math.max(0, length -this.size);
-
-            temp = new byte[length];
-            System.arraycopy(data, offset +size, temp, 0, length -size);
-            data = temp;
-            
-            if (this.data.size() +data.length <= this.size) {
-                this.data.write(data);
-                return;
+            if (this.size > 0) {
+                int size = 0;
+                if (length > this.size)
+                    size = Math.max(0, length -this.size);
+    
+                byte[] temp = new byte[length];
+                System.arraycopy(data, offset +size, temp, 0, length -size);
+                data = temp;
+                
+                if (this.data.size() +data.length <= this.size) {
+                    this.data.write(data);
+                    return;
+                }
+                
+                temp = this.data.toByteArray();
+                this.data.reset();
+                
+                size = Math.max(0, this.size -data.length);
+                if (size > 0)
+                    this.data.write(temp, temp.length -size, size);
             }
-            
-            temp = this.data.toByteArray();
-            this.data.reset();
-            
-            size = Math.max(0, this.size -data.length);
-            if (size > 0)
-                this.data.write(temp, temp.length -size, size);
             
             this.data.write(data);
         }
@@ -120,7 +140,11 @@ public class OutputStreamTail extends OutputStream {
      */
     public byte[] toByteArray() {
         synchronized (this.data) {
-            return this.data.toByteArray();
+            try {return this.data.toByteArray();
+            } finally {
+                if (this.size <= 0)
+                    this.data.reset();
+            }
         }
     }
     
