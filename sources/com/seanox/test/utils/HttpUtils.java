@@ -3,7 +3,7 @@
  *  im Folgenden Seanox Software Solutions oder kurz Seanox genannt.
  *  Diese Software unterliegt der Version 2 der GNU General Public License.
  *
- *  Seanox Test Utilities
+ *  Seanox Test SDK
  *  Copyright (C) 2017 Seanox Software Solutionss
  *
  *  This program is free software; you can redistribute it and/or modify it
@@ -43,7 +43,14 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 
 /**
- *  Utilities for HTTP(S) connections.
+ *  Utilities for HTTP(S) connections.<br>
+ *  <br>
+ *  HttpUtils 1.0 20171212<br>
+ *  Copyright (C) 2017 Seanox Software Solutions<br>
+ *  Alle Rechte vorbehalten.
+ *
+ *  @author  Seanox Software Solutions
+ *  @version 1.0 20171212
  */
 public class HttpUtils {
     
@@ -148,14 +155,14 @@ public class HttpUtils {
      *  @throws IOException
      *  @throws GeneralSecurityException 
      */
-    private static Socket createSocket(String address, Keystore keystore)
+    private static Socket createSocket(String address, Keystore keystore, int timeout)
             throws IOException, GeneralSecurityException {
 
         if (keystore == null) {
             Socket socket = new Socket(address.replaceAll(Pattern.NETWORK_CONNECTION, "$1"),
                     Integer.valueOf(address.replaceAll(Pattern.NETWORK_CONNECTION, "$2")).intValue());
-            socket.setSoTimeout(65535);
-            socket.setSoLinger(true, 65535);
+            socket.setSoTimeout(timeout);
+            socket.setSoLinger(true, timeout);
             return socket;
         }
         
@@ -163,7 +170,7 @@ public class HttpUtils {
         keyStore.load(new FileInputStream(keystore.getFile()), keystore.getPassword().toCharArray());
 
         KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
-        keyManagerFactory.init(keyStore, ("changeIt").toCharArray());
+        keyManagerFactory.init(keyStore, keystore.getPassword().toCharArray());
 
         TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm()); 
         trustManagerFactory.init(keyStore);
@@ -176,8 +183,8 @@ public class HttpUtils {
         SSLSocket sslSocket = (SSLSocket)sslSocketFactory.createSocket(address.replaceAll(Pattern.NETWORK_CONNECTION, "$1"),
                 Integer.valueOf(address.replaceAll(Pattern.NETWORK_CONNECTION, "$2")).intValue());
         sslSocket.startHandshake();
-        sslSocket.setSoTimeout(65535);
-        sslSocket.setSoLinger(true, 65535);
+        sslSocket.setSoTimeout(timeout);
+        sslSocket.setSoLinger(true, timeout);
         
         return sslSocket;
     }
@@ -193,7 +200,20 @@ public class HttpUtils {
             throws IOException, GeneralSecurityException {
         return HttpUtils.sendRequest(address, null, (Keystore)null);
     }
-    
+
+    /**
+     *  Sends a HTTP request to a server.
+     *  @param  address
+     *  @param  timeout
+     *  @return the received response
+     *  @throws IOException
+     *  @throws GeneralSecurityException
+     */    
+    public static byte[] sendRequest(String address, int timeout)
+            throws IOException, GeneralSecurityException {
+        return HttpUtils.sendRequest(address, null, (Keystore)null, timeout);
+    }
+
     /**
      *  Sends a HTTP request to a server.
      *  @param  address
@@ -206,7 +226,21 @@ public class HttpUtils {
             throws IOException, GeneralSecurityException {
         return HttpUtils.sendRequest(address, null, keystore);
     }
-    
+
+    /**
+     *  Sends a HTTP request to a server.
+     *  @param  address
+     *  @param  keystore
+     *  @param  timeout
+     *  @return the received response
+     *  @throws IOException
+     *  @throws GeneralSecurityException
+     */
+    public static byte[] sendRequest(String address, Keystore keystore, int timeout)
+            throws IOException, GeneralSecurityException {
+        return HttpUtils.sendRequest(address, null, keystore, timeout);
+    }
+
     /**
      *  Sends a HTTP request to a server.
      *  @param  address
@@ -224,6 +258,20 @@ public class HttpUtils {
      *  Sends a HTTP request to a server.
      *  @param  address
      *  @param  request
+     *  @param  timeout
+     *  @return the received response
+     *  @throws IOException
+     *  @throws GeneralSecurityException
+     */
+    public static byte[] sendRequest(String address, String request, int timeout)
+            throws IOException, GeneralSecurityException {
+        return HttpUtils.sendRequest(address, request, (Keystore)null, timeout);
+    }    
+    
+    /**
+     *  Sends a HTTP request to a server.
+     *  @param  address
+     *  @param  request
      *  @param  data
      *  @return the received response
      *  @throws IOException
@@ -232,7 +280,22 @@ public class HttpUtils {
     public static byte[] sendRequest(String address, String request, InputStream data)
             throws IOException, GeneralSecurityException {
         return HttpUtils.sendRequest(address, request, data, null);
-    }    
+    }  
+    
+    /**
+     *  Sends a HTTP request to a server.
+     *  @param  address
+     *  @param  request
+     *  @param  data
+     *  @param  timeout 
+     *  @return the received response
+     *  @throws IOException
+     *  @throws GeneralSecurityException
+     */
+    public static byte[] sendRequest(String address, String request, InputStream data, int timeout)
+            throws IOException, GeneralSecurityException {
+        return HttpUtils.sendRequest(address, request, data, null, timeout);
+    }     
 
     /**
      *  Sends a HTTP request to a server.
@@ -252,6 +315,21 @@ public class HttpUtils {
      *  Sends a HTTP request to a server.
      *  @param  address
      *  @param  request
+     *  @param  keystore
+     *  @param  timeout
+     *  @return the received response
+     *  @throws IOException
+     *  @throws GeneralSecurityException
+     */
+    public static byte[] sendRequest(String address, String request, Keystore keystore, int timeout)
+            throws IOException, GeneralSecurityException {
+        return HttpUtils.sendRequest(address, request, (InputStream)null, keystore, timeout);
+    }    
+    
+    /**
+     *  Sends a HTTP request to a server.
+     *  @param  address
+     *  @param  request
      *  @param  data
      *  @param  keystore
      *  @return the received response
@@ -260,19 +338,34 @@ public class HttpUtils {
      */
     public static byte[] sendRequest(String address, String request, InputStream data, Keystore keystore)
             throws IOException, GeneralSecurityException {
+        return HttpUtils.sendRequest(address, request, data, keystore, 65535);
+    }
+    
+    /**
+     *  Sends a HTTP request to a server.
+     *  @param  address
+     *  @param  request
+     *  @param  data
+     *  @param  keystore
+     *  @param  timeout
+     *  @return the received response
+     *  @throws IOException
+     *  @throws GeneralSecurityException
+     */
+    public static byte[] sendRequest(String address, String request, InputStream data, Keystore keystore, int timeout)
+            throws IOException, GeneralSecurityException {
         
         if (!address.matches(Pattern.NETWORK_CONNECTION))
             throw new IllegalArgumentException("Invalid connection string: " + address + ", expected <host>:<port>");
     
-        try (Socket socket = HttpUtils.createSocket(address, keystore)) {
+        try (Socket socket = HttpUtils.createSocket(address, keystore, timeout)) {
             if (request != null) {
                 OutputStream output = socket.getOutputStream();
                 PrintWriter writer = new PrintWriter(output);
                 writer.print(request);
                 writer.flush();
-                while (data != null
-                        && StreamUtils.forward(data, output) >= 0)
-                    continue;
+                if (data != null)
+                    StreamUtils.transmit(data, output);
             }
             return StreamUtils.read(socket.getInputStream());   
         }

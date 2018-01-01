@@ -42,12 +42,16 @@ import java.util.List;
  *  <br>
  *  ResourceUtils 1.0 20171212<br>
  *  Copyright (C) 2017 Seanox Software Solutions<br>
- *  Alle Rechte vorbehalten.
+ *  All rights reserved.
  *
  *  @author  Seanox Software Solutions
  *  @version 1.0 20171212
  */
 public class ResourceUtils {
+    
+    /** Constructor, creates a new ResourceUtils object. */
+    private ResourceUtils() {
+    }      
     
     /**
      *  Determines the context (package, class, method) from the current call.

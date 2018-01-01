@@ -3,7 +3,7 @@
  *  im Folgenden Seanox Software Solutions oder kurz Seanox genannt. Diese
  *  Software unterliegt der Version 2 der GNU General Public License.
  *
- *  Seanox Test Utilities
+ *  Seanox Test SDK
  *  Copyright (C) 2017 Seanox Software Solutions
  *
  *  This program is free software; you can redistribute it and/or modify it
@@ -29,9 +29,20 @@ import java.io.OutputStream;
 import java.util.Arrays;
 
 /**
- *  Utils for streams.
+ *  Utils for streams.<br>
+ *  <br>
+ *  StreamUtils 1.0 20171212<br>
+ *  Copyright (C) 2017 Seanox Software Solutions<br>
+ *  All rights reserved.
+ *
+ *  @author  Seanox Software Solutions
+ *  @version 1.0 20171212
  */
 public class StreamUtils {
+    
+    /** Constructor, creates a new StreamUtils object. */
+    private StreamUtils() {
+    }    
 
     /**
      *  Reads all bytes from a data stream.
@@ -73,6 +84,49 @@ public class StreamUtils {
     }
     
     /**
+     *  Forwards the contents of a data stream.
+     *  The methods works like the {@link InputStream#read(byte[])}.
+     *  @param  input  data stream from
+     *  @param  output data stream to
+     *  @return the total number of read/forward bytes, or -1 if there is no
+     *          more data because the end of the stream has been reached
+     *  @throws IOException
+     *      If the first byte cannot be read for any reason other than the end
+     *      of the stream, if the input stream has been closed, or if some other
+     *      I/O error occurs
+     */
+    public static long transmit(InputStream input, OutputStream output)
+            throws IOException {
+        return StreamUtils.transmit(input, output, 0);
+    }
+    
+    /**
+     *  Forwards the contents of a data stream.
+     *  The methods works like the {@link InputStream#read(byte[])}.
+     *  @param  input  data stream from
+     *  @param  output data stream to
+     *  @param  offset skips over and discards bytes of data from the input stream
+     *  @return the total number of read/forward bytes, or -1 if there is no
+     *          more data because the end of the stream has been reached
+     *  @throws IOException
+     *      If the first byte cannot be read for any reason other than the end
+     *      of the stream, if the input stream has been closed, or if some other
+     *      I/O error occurs
+     */
+    public static long transmit(InputStream input, OutputStream output, long offset)
+            throws IOException {
+
+        input.skip(offset);
+        long volume = 0;
+        byte[] bytes = new byte[65535];
+        for (int length = 0;
+                (length = input.read(bytes)) >= 0;
+                volume +=length)
+            output.write(bytes, 0, length);
+        return volume;
+    }      
+    
+    /**
      *  Reads the last bytes from a data stream.
      *  @param  input  input stream
      *  @param  length number of bytes at the end
@@ -87,9 +141,9 @@ public class StreamUtils {
     
     /**
      *  Reads the last bytes from a data stream.
-     *  @param  input input stream
+     *  @param  input  input stream
      *  @param  length number of bytes at the end
-     *  @param  smart reads until the data stream no longer supplies data.
+     *  @param  smart  reads until the data stream no longer supplies data
      *  @return readed bytes as array
      *  @throws IOException
      *      In case of incorrect access to the data stream
@@ -121,26 +175,4 @@ public class StreamUtils {
         
         return result.toByteArray();
     }    
-    
-    /**
-     *  Forwards the contents of a data stream.
-     *  The methods works like the {@link InputStream#read(byte[])}.
-     *  @param  input  data stream from
-     *  @param  output data stream to
-     *  @return the total number of read/forward bytes, or -1 if there is no
-     *          more data because the end of the stream has been reached
-     *  @throws IOException
-     *      If the first byte cannot be read for any reason other than the end
-     *      of the stream, if the input stream has been closed, or if some other
-     *      I/O error occurs
-     */
-    public static int forward(InputStream input, OutputStream output)
-            throws IOException {
-        
-        byte[] bytes = new byte[65535];
-        int size = input.read(bytes);
-        if (size > 0 && output != null)
-            output.write(bytes, 0, size);
-        return size;
-    }
 }

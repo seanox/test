@@ -26,7 +26,7 @@ package com.seanox.test.utils;
  *  <br>
  *  Pattern 1.0 20171212<br>
  *  Copyright (C) 2017 Seanox Software Solutions<br>
- *  Alle Rechte vorbehalten.
+ *  All rights reserved.
  *
  *  @author  Seanox Software Solutions
  *  @version 1.0 20171212
@@ -388,4 +388,8 @@ public class Pattern {
     public static String HTTP_RESPONSE_WWW_AUTHENTICATE_DIGEST(String realm) {
         return "(?si)^.*\r\nWWW-Authenticate: Digest realm=\"\\Q" + realm + "\\E\",.*$";
     }
+    
+    /** Constructor, creates a new Pattern object. */
+    private Pattern() {
+    }    
 }

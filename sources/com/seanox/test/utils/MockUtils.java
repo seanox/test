@@ -30,12 +30,16 @@ import java.util.Arrays;
  *  <br>
  *  MockUtils 1.0 20171212<br>
  *  Copyright (C) 2017 Seanox Software Solutions<br>
- *  Alle Rechte vorbehalten.
+ *  All rights reserved.
  *
  *  @author  Seanox Software Solutions
  *  @version 1.0 20171212
  */
 public class MockUtils {
+    
+    /** Constructor, creates a new MockUtils object. */
+    private MockUtils() {
+    }     
     
     /**
      *  Creates a readable InputStream.

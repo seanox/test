@@ -3,7 +3,7 @@
  *  im Folgenden Seanox Software Solutions oder kurz Seanox genannt.
  *  Diese Software unterliegt der Version 2 der GNU General Public License.
  *
- *  Seanox Test Utilities
+ *  Seanox Test SDK
  *  Copyright (C) 2017 Seanox Software Solutions
  *
  *  This program is free software; you can redistribute it and/or modify it
@@ -65,6 +65,12 @@ import com.seanox.test.utils.Executor.Worker.Filter;
  *      }
  *  }
  *  </pre>
+ *  Executor 1.0 20171212<br>
+ *  Copyright (C) 2017 Seanox Software Solutions<br>
+ *  All rights reserved.
+ *
+ *  @author  Seanox Software Solutions
+ *  @version 1.0 20171212
  */
 public class Executor {
 
@@ -79,15 +85,6 @@ public class Executor {
 
     /** Counter of completed threads/worksers */
     private volatile int count;
-
-    /** Constants for status STARTED */
-    private static final int STARTED = 1;
-    
-    /** Constants for status TERMINATED */
-    private static final int TERMINATED = 2;
-    
-    /** Constants for status INTERRUPTED */
-    private static final int INTERRUPTED = 4;
     
     /** Constructor, creates a new Executor object. */
     private Executor() {
@@ -204,9 +201,9 @@ public class Executor {
     public void execute() {
         
         synchronized (this) {
-            if ((this.status & STARTED) != 0)
+            if ((this.status & Status.STARTED) != 0)
                 throw new IllegalStateException();
-            this.status |= STARTED;
+            this.status |= Status.STARTED;
         }
     }
     
@@ -215,17 +212,17 @@ public class Executor {
      *  @return {@code true} if this executor has been executed
      */
     public boolean isExecuted() {
-        return (this.status & STARTED) != 0;
+        return (this.status & Status.STARTED) != 0;
     } 
     
     /** Interrupts this executor and all established workers. */
     public void interrupt() {
         
         synchronized (this) {
-            if ((this.status & STARTED) == 0
-                    || (this.status & INTERRUPTED) != 0)
+            if ((this.status & Status.STARTED) == 0
+                    || (this.status & Status.INTERRUPTED) != 0)
                 throw new IllegalStateException();
-            this.status |= INTERRUPTED;
+            this.status |= Status.INTERRUPTED;
         }        
     }
     
@@ -234,7 +231,7 @@ public class Executor {
      *  @return {@code true} if this executor has been interrupted
      */
     public boolean isInterrupted() {
-        return (this.status & INTERRUPTED) != 0;
+        return (this.status & Status.INTERRUPTED) != 0;
     }
     
     /**
@@ -261,10 +258,10 @@ public class Executor {
         long timing = System.currentTimeMillis();
         while (this.count < this.threads.size()
                 && (timeout < 0 || System.currentTimeMillis() -timing < timeout)
-                && (this.status & INTERRUPTED) == 0)
+                && (this.status & Status.INTERRUPTED) == 0)
             Thread.sleep(25);
         
-        if ((this.status & INTERRUPTED) == 0
+        if ((this.status & Status.INTERRUPTED) == 0
                 && (timeout < 0 || System.currentTimeMillis() -timing < timeout))
             return true;
         
@@ -279,7 +276,7 @@ public class Executor {
      *  @return {@code true} if this executor has been terminated
      */
     public boolean isTerminated() {
-        return (this.status & TERMINATED) != 0;
+        return (this.status & Status.TERMINATED) != 0;
     }
     
     /**
@@ -325,6 +322,19 @@ public class Executor {
                 workers.add(worker);
         
         return workers.toArray(new Worker[0]);
+    }
+    
+    /** Internal class for Constants of Status. */
+    private static class Status {
+        
+        /** Constants for STARTED */
+        private static final int STARTED = 1;
+        
+        /** Constants for TERMINATED */
+        private static final int TERMINATED = 2;
+        
+        /** Constants for INTERRUPTED */
+        private static final int INTERRUPTED = 4;
     }
     
     /**

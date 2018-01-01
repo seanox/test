@@ -33,12 +33,16 @@ import java.util.regex.Pattern;
  *  <br>
  *  FileUtils 1.0 20171212<br>
  *  Copyright (C) 2017 Seanox Software Solutions<br>
- *  Alle Rechte vorbehalten.
+ *  All rights reserved.
  *
  *  @author  Seanox Software Solutions
  *  @version 1.0 20171212
  */
 public class FileUtils {
+    
+    /** Constructor, creates a new FileUtils object. */
+    private FileUtils() {
+    }      
     
     /**
      *  Writes all bytes of a file in the passed OutputStream.

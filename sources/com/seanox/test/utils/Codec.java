@@ -28,12 +28,16 @@ import java.util.Base64;
  *  <br>
  *  Codec 1.0 20171212<br>
  *  Copyright (C) 2017 Seanox Software Solutions<br>
- *  Alle Rechte vorbehalten.
+ *  All rights reserved.
  *
  *  @author  Seanox Software Solutions
  *  @version 1.0 20171212
  */
 public class Codec {
+    
+    /** Constructor, creates a new Codec object. */
+    private Codec() {
+    }    
 
     /**
      *  Encodes a text in Base64.
