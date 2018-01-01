@@ -43,6 +43,7 @@ import com.seanox.test.utils.Executor.Worker.Filter;
  *      <dir><b>Example for a single instance with monitoring and timeout</b></dir>
  *  <pre>
  *  Executor executor = Executor.create(50, new Worker() {
+ *  
  *      protected void execute() {
  *          ...
  *      }
@@ -57,9 +58,11 @@ import com.seanox.test.utils.Executor.Worker.Filter;
  *  executor.await(60000);
  *  
  *  public class ExampleWorker extends Worker {
+ *  
  *      public void prepare() {
  *          ...
  *      }
+ *      
  *      public void execute() {
  *          ...
  *      }
