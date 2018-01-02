@@ -4,7 +4,7 @@
  *  Diese Software unterliegt der Version 2 der GNU General Public License.
  *
  *  Seanox Test SDK
- *  Copyright (C) 2017 Seanox Software Solutions
+ *  Copyright (C) 2018 Seanox Software Solutions
  *
  *  This program is free software; you can redistribute it and/or modify it
  *  under the terms of version 2 of the GNU General Public License as published
@@ -26,12 +26,12 @@ import org.junit.Assert;
 /** 
  *  Simple time measurement and testing.<br>
  *  <br>
- *  Timing 1.0 20171231<br>
- *  Copyright (C) 2017 Seanox Software Solutions<br>
+ *  Timing 1.0 20180102<br>
+ *  Copyright (C) 2018 Seanox Software Solutions<br>
  *  All rights reserved.
  *
  *  @author  Seanox Software Solutions
- *  @version 1.0 20171231
+ *  @version 1.0 20180102
  */
 public class Timing {
 
@@ -151,7 +151,7 @@ public class Timing {
      *  @param millisecondsFrom
      *  @param millisecondsTo
      */
-    public void assertTimeRangeIn(int millisecondsFrom, int millisecondsTo) {
+    public void assertTimeIn(int millisecondsFrom, int millisecondsTo) {
         
         long time = this.timeMillis();
         if (time < millisecondsFrom || time > millisecondsTo)
