@@ -42,12 +42,10 @@ public class Pattern {
     /** 
      *  Pattern for netweork connection.<br>
      *  Format: {@code host:port}<br>
-     *  Grouping:
-     *  <dir>
-     *    0: match<br>
-     *    1: host<br>
-     *    2: port<br>
-     *  </ul> 
+     *      <dir>Grouping:</dir>
+     *  0: match<br>
+     *  1: host<br>
+     *  2: port
      */
     public static final String NETWORK_CONNECTION = "^(?i:([a-z_\\-\\d\\.:]+):(\\d{1,5}))$";
     
@@ -148,7 +146,6 @@ public class Pattern {
      *  Pattern for a custom access log entry
      *  @param  code
      *  @param  request
-     *  @param  length
      *  @param  user
      *  @return custom pattern
      */
@@ -165,13 +162,11 @@ public class Pattern {
     }
     
     /** 
-     *  Pattern for a HTTP response.<br>
-     *  Grouping:
-     *  <dir>
-     *    0: match<br>
-     *    1: header<br>
-     *    2: body<br>
-     *  </ul> 
+     *  Pattern for a HTTP response.
+     *      <dir>Grouping:</dir>
+     *  0: match<br>
+     *  1: header<br>
+     *  2: body
      */
     public static final String HTTP_RESPONSE = "(?s)^(.*?)(?:(?:\r\n){2})(.*)$";
     

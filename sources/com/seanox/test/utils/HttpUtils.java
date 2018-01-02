@@ -397,7 +397,6 @@ public class HttpUtils {
      *  @param address
      *  @param request
      *  @param event
-     *  @param keystore
      */
     public static void sendRequest(String address, String request, HttpUtils.RequestEvent event) {
         HttpUtils.sendRequest(address, request, event, null);

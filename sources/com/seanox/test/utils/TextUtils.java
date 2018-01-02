@@ -4,7 +4,7 @@
  *  Diese Software unterliegt der Version 2 der GNU General Public License.
  *
  *  Seanox Test SDK
- *  Copyright (C) 2017 Seanox Software Solutions
+ *  Copyright (C) 2018 Seanox Software Solutions
  *
  *  This program is free software; you can redistribute it and/or modify it
  *  under the terms of version 2 of the GNU General Public License as published
@@ -30,24 +30,28 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- *  Utils for text and strings.<br>
+ *  Utilities for text and strings.<br>
  *  <br>
- *  TextUtils 1.0 20171212<br>
- *  Copyright (C) 2017 Seanox Software Solutions<br>
- *  Alle Rechte vorbehalten.
+ *  TextUtils 1.0 20180102<br>
+ *  Copyright (C) 2018 Seanox Software Solutions<br>
+ *  All rights reserved.
  *
  *  @author  Seanox Software Solutions
- *  @version 1.0 20171212
+ *  @version 1.0 20180102
  */
 public class TextUtils {
     
     /** Naturally sort comparator */
     public static final Comparator<String> NATURAL_COMPARATOR = new TextUtils.NaturalComparator();
     
+    /** Constructor, creates a new TextUtils object. */
+    private TextUtils() {
+    }    
+    
     /**
-     *  Splits this string around matches of the given <a
-     *  href="../util/regex/Pattern.html#sum">regular expression</a>.
-     *  Trailing empty strings ARE THEREFORE INCLUDED in the resulting array.  
+     *  Splits this string around matches of the given regular expression.
+     *  Repeated matches are not combined and creates empty entries in the
+     *  array.
      *  @param  string string
      *  @param  regex  the delimiting regular expression
      *  @return the array of strings computed by splitting this string around
@@ -60,7 +64,8 @@ public class TextUtils {
         while (true) {
             Matcher matcher = pattern.matcher(string);
             if (!matcher.find()) {
-                result.add(string);
+                if (string.length() > 0)
+                    result.add(string);
                 break;
             }
             result.add(string.substring(0, matcher.start()));
@@ -68,28 +73,6 @@ public class TextUtils {
         }
         
         return result.toArray(new String[0]);
-    }
-    
-    /**
-     *  Extracts all lines of a string.
-     *  Empty lines ARE THEREFORE INCLUDED in the resulting array.  
-     *  @param  string  string
-     *  @return the array of lines
-     */
-    public static String[] extractLines(String string) {
-        
-        int cursor;
-        if (string == null)
-            string = "";
-        List<String> lineList = new ArrayList<>();
-        string = string.replaceAll("(?s)((\r\n)|(\n\r)|[\r\n])", "\n");
-        while ((cursor = string.indexOf('\n')) >= 0) {
-            lineList.add(string.substring(0, cursor));
-            string = string.substring(cursor +1);
-        }
-        if (string.length() > 0)
-            lineList.add(string);
-        return lineList.toArray(new String[0]);
     }
     
     /**
@@ -110,16 +93,16 @@ public class TextUtils {
         if (string == null)
             string = "";
         
-        //Datenpuffer wird eingerichtet
+        //the data buffer is established
         length = string.length();
         bytes  = new byte[length *2];
         
         for (loop = count = 0; loop < length; loop++) {
             
-            //der ASCII Code wird ermittelt
+            //the ASCII code is determined
             code = string.charAt(loop);
 
-            //der Hexcode wird in das ASCII Zeichen umgesetzt
+            //the hexcode is converted into ASCII character
             if (code == '\\') {
                 loop += 2;
                 try {code = Integer.parseInt(string.substring(loop -1, loop +1), 16);
@@ -140,8 +123,6 @@ public class TextUtils {
      *  erfolgt per Slash + ISO oder dem Hexadezimal-Wert.
      *  @param  string zu maskierender String
      *  @return der String mit den ggf. maskierten Zeichen.
-     *  @throws Exception
-     *      Im Fall nicht erwarteter Fehler
      */
     public static String escape(String string) {
         
@@ -155,10 +136,10 @@ public class TextUtils {
         int    length;
         int    loop;
         
-        //Datengroesse wird ermittelt
+        //determination of data size
         length = string.length();
         
-        //Datenpuffer wird eingerichtet
+        //the data buffer is established
         cache = new byte[length *3];
         
         codex = ("\b\t\n\f\r\"'\\btnfr\"'\\").getBytes();
@@ -166,7 +147,7 @@ public class TextUtils {
         
         for (loop = count = 0; loop < length; loop++) {
             
-            //der ASCII Code wird ermittelt
+            //the ASCII code is determined
             code = string.charAt(loop);
             
             cursor = Arrays.binarySearch(codex, (byte)code);
