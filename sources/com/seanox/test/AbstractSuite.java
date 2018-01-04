@@ -119,8 +119,8 @@ import com.seanox.test.utils.OutputFacadeStream;
  *  It is possible to annotate central methods and sequences that are executed
  *  with start and end of the test environment, start and end of test classes,
  *  or executed before and after the execution of tests.<br>
- *  Additional central I/O interfaces (e.g. {@link System.out} and
- *  {@link System.err}) are redirected so that they can be better included in
+ *  Additional central I/O interfaces (e.g. {@link System#out} and
+ *  {@link System#err}) are redirected so that they can be better included in
  *  the tests.
  *  
  *  <h3>What do I have to do?</h3>
@@ -155,7 +155,7 @@ import com.seanox.test.utils.OutputFacadeStream;
  *  multiple methods can be annotated, always the most qualified (nearest)
  *  method is used.<br> 
  *  <br>
- *  {@link Terminates}: Called after the last test and terminates the test
+ *  {@link Terminate}: Called after the last test and terminates the test
  *  environment. The corresponding method is annotated. In the hierarchy,
  *  multiple methods can be annotated, always the most qualified (nearest)
  *  method is used.<br> 
@@ -335,7 +335,7 @@ public abstract class AbstractSuite {
 
     /**
      *  Writes a trace information to the system output stream.
-     *  @param source
+     *  @param source class
      */
     protected static void trace(Class<?> source) {
         AbstractSuite.trace(source, null);
@@ -343,8 +343,8 @@ public abstract class AbstractSuite {
 
     /**
      *  Writes a trace information to the system output stream.
-     *  @param source
-     *  @param method
+     *  @param source class
+     *  @param method method
      */
     protected static void trace(Class<?> source, Method method) {
         

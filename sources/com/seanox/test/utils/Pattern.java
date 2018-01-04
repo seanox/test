@@ -105,7 +105,7 @@ public class Pattern {
     
     /** 
      *  Pattern for a custom access log entry
-     *  @param  code
+     *  @param  code code
      *  @return custom pattern
      */
     public static String ACCESS_LOG_STATUS(String code) {
@@ -116,8 +116,8 @@ public class Pattern {
     
     /** 
      *  Pattern for a custom access log entry
-     *  @param  code
-     *  @param  request
+     *  @param  code    code
+     *  @param  request request
      *  @return custom pattern
      */
     public static String ACCESS_LOG_STATUS(String code, String request) {
@@ -126,9 +126,9 @@ public class Pattern {
     
     /** 
      *  Pattern for a custom access log entry
-     *  @param  code
-     *  @param  request
-     *  @param  length
+     *  @param  code    code
+     *  @param  request request
+     *  @param  length  length
      *  @return custom pattern
      */
     public static String ACCESS_LOG_STATUS(String code, String request, int length) {
@@ -144,9 +144,9 @@ public class Pattern {
     
     /** 
      *  Pattern for a custom access log entry
-     *  @param  code
-     *  @param  request
-     *  @param  user
+     *  @param  code    code
+     *  @param  request request
+     *  @param  user    user
      *  @return custom pattern
      */
     public static String ACCESS_LOG_STATUS(String code, String request, String user) {
@@ -178,7 +178,7 @@ public class Pattern {
     
     /** 
      *  Pattern for a custom http response Allow header 
-     *  @param  methods
+     *  @param  methods methods
      *  @return pattern for the custom http response Allow header
      */
     public static final String HTTP_RESPONSE_ALLOW(String... methods) {
@@ -207,7 +207,7 @@ public class Pattern {
     
     /** 
      *  Pattern for a custom http response Content-Lenght header 
-     *  @param  length
+     *  @param  length length
      *  @return pattern for the custom http response Content-Length header
      */
     public static String HTTP_RESPONSE_CONTENT_LENGTH(long length) {
@@ -219,9 +219,9 @@ public class Pattern {
     
     /** 
      *  Pattern for a custom http response Range header 
-     *  @param  start
-     *  @param  end
-     *  @param  size
+     *  @param  start start
+     *  @param  end   end
+     *  @param  size  size
      *  @return pattern for the custom http response Range header
      */
     public static String HTTP_RESPONSE_CONTENT_RANGE(long start, long end , long size) {
@@ -260,7 +260,7 @@ public class Pattern {
     
     /** 
      *  Pattern for a custom http response Location header 
-     *  @param  url
+     *  @param  url url
      *  @return pattern for the custom http response Location header
      */
     public static final String HTTP_RESPONSE_LOCATION(String url) {
@@ -335,7 +335,7 @@ public class Pattern {
     
     /** 
      *  Pattern for a custom http response header
-     *  @param  code
+     *  @param  code code
      *  @return pattern for the custom http response header
      */
     public static final String HTTP_RESPONSE_STATUS(String code) {
@@ -353,7 +353,7 @@ public class Pattern {
 
     /** 
      *  Pattern for a custom http response WWW-Authenticate header 
-     *  @param  method
+     *  @param  method method
      *  @return pattern for the custom http response WWW-Authenticate header
      */
     public static String HTTP_RESPONSE_WWW_AUTHENTICATE(String method) {
@@ -365,7 +365,7 @@ public class Pattern {
 
     /** 
      *  Pattern for a custom http response WWW-Authenticate Basic header 
-     *  @param  realm
+     *  @param  realm realm
      *  @return pattern for the custom http response WWW-Authenticate Basic header
      */    
     public static final String HTTP_RESPONSE_WWW_AUTHENTICATE_BASIC(String realm) {
@@ -377,7 +377,7 @@ public class Pattern {
 
     /** 
      *  Pattern for a custom http response WWW-Authenticate Digest header 
-     *  @param  realm
+     *  @param  realm realm
      *  @return pattern for the custom http response WWW-Authenticate Digest header
      */    
     public static String HTTP_RESPONSE_WWW_AUTHENTICATE_DIGEST(String realm) {

@@ -52,7 +52,7 @@ public class OutputFacadeStream extends OutputStream {
     
     /**
      *  Constructor creates a new OutputMultiStream object.
-     *  @param outputStreams
+     *  @param outputStreams output streams
      */
     public OutputFacadeStream(OutputStream... outputStreams) {
         
@@ -64,7 +64,7 @@ public class OutputFacadeStream extends OutputStream {
     
     /**
      *  Adds one or more output streams.
-     *  @param outputStreams
+     *  @param outputStreams output streams
      */
     public void mount(OutputStream... outputStreams) {
 
@@ -77,7 +77,7 @@ public class OutputFacadeStream extends OutputStream {
 
     /**
      *  Removes one or more output streams.
-     *  @param outputStreams
+     *  @param outputStreams output streams
      */
     public void unmount(OutputStream... outputStreams) {
 

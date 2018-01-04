@@ -115,7 +115,7 @@ public class Timing {
     /**
      *  Checks whether the currently measured time is greater than or equal
      *  to the specified millisecond.
-     *  @param milliseconds
+     *  @param milliseconds milliseconds
      */
     public void assertTimeOut(int milliseconds) {
         if (this.timeMillis() < milliseconds)
@@ -125,8 +125,8 @@ public class Timing {
     /**
      *  Checks whether the currently measured time is outside of the
      *  specified time frame in milliseconds.
-     *  @param millisecondsFrom
-     *  @param millisecondsTo
+     *  @param millisecondsFrom milliseconds from
+     *  @param millisecondsTo   milliseconds To
      */
     public void assertTimeOut(int millisecondsFrom, int millisecondsTo) {
         
@@ -138,7 +138,7 @@ public class Timing {
     /**
      *  Checks whether the currently measured time is less than or equal to
      *  the specified millisecond.
-     *  @param milliseconds
+     *  @param milliseconds milliseconds
      */
     public void assertTimeIn(int milliseconds) {
         if (this.timeMillis() > milliseconds)
@@ -148,8 +148,8 @@ public class Timing {
     /**
      *  Checks whether the currently measured time is within the specified
      *  time frame in milliseconds.
-     *  @param millisecondsFrom
-     *  @param millisecondsTo
+     *  @param millisecondsFrom milliseconds from
+     *  @param millisecondsTo   milliseconds To
      */
     public void assertTimeIn(int millisecondsFrom, int millisecondsTo) {
         

@@ -52,7 +52,7 @@ public class MockUtils {
      *      Is the space less than 1, then the InputStream is empty.
      *  </ul>
      *  The Data will be created on the fly and will not stored in the memory.
-     *  @param  size
+     *  @param  size size
      *  @return the created readable InputStream.
      */
     public static InputStream createInputStream(final long size) {

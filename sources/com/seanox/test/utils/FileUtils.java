@@ -46,8 +46,8 @@ public class FileUtils {
     
     /**
      *  Writes all bytes of a file in the passed OutputStream.
-     *  @param  file
-     *  @param  output
+     *  @param  file   file
+     *  @param  output output
      *  @return the number of transferred bytes
      *  @throws IOException
      *      In case of faulty data access.

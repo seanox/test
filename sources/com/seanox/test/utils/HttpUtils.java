@@ -103,8 +103,8 @@ public class HttpUtils {
     /**
      *  Returns the value of a header field.
      *  If the field does not exist, these methods return {@code null}.
-     *  @param  response
-     *  @param  field
+     *  @param  response response
+     *  @param  field    field
      *  @return the value of a header field, otherwise {@code null}
      */
     public static String getResponseHeaderValue(String response, String field) {
@@ -117,8 +117,8 @@ public class HttpUtils {
     
     /**
      *  Checks exists one or a set of response header fields.
-     *  @param  response
-     *  @param  fields
+     *  @param  response response
+     *  @param  field    field
      *  @return {@code true} if all passed fields exists
      */
     public static boolean exitsResponseHeader(String response, String... fields) {
@@ -153,8 +153,8 @@ public class HttpUtils {
      *  Creates a socket for an HTTP(S) connection.
      *  The decision whether HTTP or HTTPS is made by specifying a keystore.
      *  HTTPS requires a keystore.
-     *  @param  address
-     *  @param  keystore
+     *  @param  address  address
+     *  @param  keystore keystore
      *  @return the create socket
      *  @throws IOException
      *  @throws GeneralSecurityException 
@@ -195,7 +195,7 @@ public class HttpUtils {
 
     /**
      *  Sends a HTTP request to a server.
-     *  @param  address
+     *  @param  address address
      *  @return the received response
      *  @throws IOException
      *  @throws GeneralSecurityException
@@ -207,8 +207,8 @@ public class HttpUtils {
 
     /**
      *  Sends a HTTP request to a server.
-     *  @param  address
-     *  @param  timeout
+     *  @param  address address
+     *  @param  timeout timeout
      *  @return the received response
      *  @throws IOException
      *  @throws GeneralSecurityException
@@ -220,8 +220,8 @@ public class HttpUtils {
 
     /**
      *  Sends a HTTP request to a server.
-     *  @param  address
-     *  @param  keystore
+     *  @param  address  address
+     *  @param  keystore keystore
      *  @return the received response
      *  @throws IOException
      *  @throws GeneralSecurityException
@@ -233,9 +233,9 @@ public class HttpUtils {
 
     /**
      *  Sends a HTTP request to a server.
-     *  @param  address
-     *  @param  keystore
-     *  @param  timeout
+     *  @param  address  address
+     *  @param  keystore keystore
+     *  @param  timeout  timeout
      *  @return the received response
      *  @throws IOException
      *  @throws GeneralSecurityException
@@ -247,8 +247,8 @@ public class HttpUtils {
 
     /**
      *  Sends a HTTP request to a server.
-     *  @param  address
-     *  @param  request
+     *  @param  address address
+     *  @param  request request
      *  @return the received response
      *  @throws IOException
      *  @throws GeneralSecurityException
@@ -260,9 +260,9 @@ public class HttpUtils {
     
     /**
      *  Sends a HTTP request to a server.
-     *  @param  address
-     *  @param  request
-     *  @param  timeout
+     *  @param  address address
+     *  @param  request request
+     *  @param  timeout timeout
      *  @return the received response
      *  @throws IOException
      *  @throws GeneralSecurityException
@@ -274,9 +274,9 @@ public class HttpUtils {
     
     /**
      *  Sends a HTTP request to a server.
-     *  @param  address
-     *  @param  request
-     *  @param  data
+     *  @param  address address
+     *  @param  request request
+     *  @param  data    data
      *  @return the received response
      *  @throws IOException
      *  @throws GeneralSecurityException
@@ -288,10 +288,10 @@ public class HttpUtils {
     
     /**
      *  Sends a HTTP request to a server.
-     *  @param  address
-     *  @param  request
-     *  @param  data
-     *  @param  timeout 
+     *  @param  address address
+     *  @param  request request
+     *  @param  data    data
+     *  @param  timeout timeout
      *  @return the received response
      *  @throws IOException
      *  @throws GeneralSecurityException
@@ -303,9 +303,9 @@ public class HttpUtils {
 
     /**
      *  Sends a HTTP request to a server.
-     *  @param  address
-     *  @param  request
-     *  @param  keystore
+     *  @param  address  address
+     *  @param  request  request
+     *  @param  keystore keystore
      *  @return the received response
      *  @throws IOException
      *  @throws GeneralSecurityException
@@ -317,10 +317,10 @@ public class HttpUtils {
     
     /**
      *  Sends a HTTP request to a server.
-     *  @param  address
-     *  @param  request
-     *  @param  keystore
-     *  @param  timeout
+     *  @param  address  address
+     *  @param  request  request
+     *  @param  keystore keystore
+     *  @param  timeout  timeout
      *  @return the received response
      *  @throws IOException
      *  @throws GeneralSecurityException
@@ -332,10 +332,10 @@ public class HttpUtils {
     
     /**
      *  Sends a HTTP request to a server.
-     *  @param  address
-     *  @param  request
-     *  @param  data
-     *  @param  keystore
+     *  @param  address  address
+     *  @param  request  request
+     *  @param  data     data
+     *  @param  keystore keystore
      *  @return the received response
      *  @throws IOException
      *  @throws GeneralSecurityException
@@ -347,11 +347,11 @@ public class HttpUtils {
     
     /**
      *  Sends a HTTP request to a server.
-     *  @param  address
-     *  @param  request
-     *  @param  data
-     *  @param  keystore
-     *  @param  timeout
+     *  @param  address  address
+     *  @param  request  request
+     *  @param  data     data
+     *  @param  keystore keystore  
+     *  @param  timeout  timeout
      *  @return the received response
      *  @throws IOException
      *  @throws GeneralSecurityException
@@ -380,13 +380,13 @@ public class HttpUtils {
         
         /**
          *  The methods are called when the server sends a response.
-         *  @param respones
+         *  @param respone respone
          */
-        void onResponse(byte[] respones);
+        void onResponse(byte[] respone);
 
         /**
          *  The methods are called when an error occurs during the connection.
-         *  @param exception
+         *  @param exception exception
          */
         void onException(Exception exception);
     }
@@ -394,9 +394,9 @@ public class HttpUtils {
     /**
      *  Sends a HTTP request to a server.
      *  The received response is handelt as {@link RequestEvent}.
-     *  @param address
-     *  @param request
-     *  @param event
+     *  @param address address
+     *  @param request request
+     *  @param event   event
      */
     public static void sendRequest(String address, String request, HttpUtils.RequestEvent event) {
         HttpUtils.sendRequest(address, request, event, null);
@@ -405,10 +405,10 @@ public class HttpUtils {
     /**
      *  Sends a HTTP request to a server.
      *  The received response is handelt as {@link RequestEvent}.
-     *  @param address
-     *  @param request
-     *  @param event
-     *  @param keystore
+     *  @param address  address
+     *  @param request  request
+     *  @param event    event
+     *  @param keystore keystore
      */
     public static void sendRequest(String address, String request, HttpUtils.RequestEvent event, Keystore keystore) {
         
@@ -445,8 +445,8 @@ public class HttpUtils {
             
             /** 
              *  Constructor, creates a new Basic Authentication.
-             *  @param user
-             *  @param password
+             *  @param user     user
+             *  @param password password
              */
             public Basic(String user, String password) {
                 super(user, password);
@@ -458,8 +458,8 @@ public class HttpUtils {
             
             /** 
              *  Constructor, creates a new Digest Authentication.
-             *  @param user
-             *  @param password
+             *  @param user     user
+             *  @param password password
              */
             public Digest(String user, String password) {
                 super(user, password);
@@ -469,9 +469,9 @@ public class HttpUtils {
     
     /**
      *  Sends a HTTP request to a server.
-     *  @param  address
-     *  @param  request
-     *  @param  authentication
+     *  @param  address        address
+     *  @param  request        request
+     *  @param  authentication authentication
      *  @return the received response
      *  @throws IOException
      *  @throws GeneralSecurityException
@@ -554,10 +554,10 @@ public class HttpUtils {
     
     /**
      *  Sends a HTTP request to a server.
-     *  @param  address
-     *  @param  request
-     *  @param  authentication
-     *  @param  keystore
+     *  @param  address        address
+     *  @param  request        request
+     *  @param  authentication authentication
+     *  @param  keystore       keystore
      *  @return the received response
      *  @throws IOException
      *  @throws GeneralSecurityException

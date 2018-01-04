@@ -362,10 +362,7 @@ public class Executor {
         /** indicator for: was terminated */
         private boolean terminate;
 
-        /**
-         *  Constructor, creates a new worker object.
-         *  @param group
-         */
+        /** Constructor, creates a new worker object. */
         protected Worker() {
             return;
         }

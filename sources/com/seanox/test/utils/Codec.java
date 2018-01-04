@@ -41,7 +41,7 @@ public class Codec {
 
     /**
      *  Encodes a text in Base64.
-     *  @param  text
+     *  @param  text text
      *  @return the encoded text
      */
     public static String encodeBase64(String text) {
@@ -53,7 +53,7 @@ public class Codec {
 
     /**
      *  Encodes bytes in Base64.
-     *  @param  bytes
+     *  @param  bytes bytes
      *  @return the encoded bytes
      */
     public static String encodeBase64(byte[] bytes) {
@@ -65,7 +65,7 @@ public class Codec {
     
     /**
      *  Encodes a text hexadecimal.
-     *  @param  text
+     *  @param  text text
      *  @return the encoded text
      */    
     public static String encodeHex(String text) {
@@ -77,7 +77,7 @@ public class Codec {
 
     /**
      *  Encodes bytes in hexadecimal.
-     *  @param  bytes
+     *  @param  bytes bytes
      *  @return the encoded bytes
      */    
     public static String encodeHex(byte[] bytes) {

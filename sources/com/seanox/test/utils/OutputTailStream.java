@@ -62,7 +62,7 @@ public class OutputTailStream extends OutputStream {
 
     /**
      *  Constructor creates a new OutputStreamTail object for a amount of data.
-     *  @param size
+     *  @param size size
      */
     public OutputTailStream(int size) {
         
