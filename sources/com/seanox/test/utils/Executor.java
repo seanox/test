@@ -30,8 +30,9 @@ import com.seanox.test.utils.Executor.Worker.Filter;
 /** 
  *  The executor provides control and monitoring to perform asynchronous tasks.
  *  The tasks are implemented as {@link Executor.Worker}.
- *  As a worker, single and multiple instances are supported.<br>
- *      <dir><b>Example for a single instance of an anonymous class</b></dir>
+ *  As a worker, single and multiple instances are supported.
+ *  
+ *  <h3>Example for a single instance of an anonymous class</h3>
  *  <pre>
  *  Executor executor = Executor.create(50, new Worker() {
  *      protected void execute() {
@@ -40,7 +41,8 @@ import com.seanox.test.utils.Executor.Worker.Filter;
  *  });
  *  executor.execute();
  *  </pre>
- *      <dir><b>Example for a single instance with monitoring and timeout</b></dir>
+ *  
+ *  <h3>Example for a single instance with monitoring and timeout</h3>
  *  <pre>
  *  Executor executor = Executor.create(50, new Worker() {
  *  
@@ -51,7 +53,8 @@ import com.seanox.test.utils.Executor.Worker.Filter;
  *  executor.execute();
  *  executor.await(60000);
  *  </pre>
- *      <dir><b>Example for a multible instance with monitoring and timeout</b></dir>
+ *  
+ *  <h3>Example for a multible instance with monitoring and timeout</h3>
  *  <pre>
  *  Executor executor = Executor.create(50, ExampleWorker.class);
  *  executor.execute();
@@ -361,8 +364,7 @@ public class Executor {
 
         /**
          *  Constructor, creates a new worker object.
-         *  @param  group
-         *  @throws Exception
+         *  @param group
          */
         protected Worker() {
             return;

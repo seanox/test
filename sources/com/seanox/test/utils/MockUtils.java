@@ -44,7 +44,7 @@ public class MockUtils {
     /**
      *  Creates a readable InputStream.
      *  This starts with A, is filled with - and ends with E.
-     *      <dir>e.g. {@code A-----E}</dir>
+     *    <dir>e.g. {@code A-----E}</dir>
      *  <ul>
      *    <li>          
      *      Is the space less than 2, then the InputStream contains only E.

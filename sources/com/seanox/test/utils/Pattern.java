@@ -42,7 +42,7 @@ public class Pattern {
     /** 
      *  Pattern for netweork connection.<br>
      *  Format: {@code host:port}<br>
-     *      <dir>Grouping:</dir>
+     *    <dir>Grouping:</dir>
      *  0: match<br>
      *  1: host<br>
      *  2: port
@@ -163,7 +163,7 @@ public class Pattern {
     
     /** 
      *  Pattern for a HTTP response.
-     *      <dir>Grouping:</dir>
+     *    <dir>Grouping:</dir>
      *  0: match<br>
      *  1: header<br>
      *  2: body

@@ -27,13 +27,13 @@ import java.io.OutputStream;
 
 /**
  *  Data stream filter for querying the latest data (tail).
- *  The data stream supports two modes.<br>
+ *  The data stream supports two modes.
  *  
- *      <dir>1. Bufferd Mode</dir>
+ *  <h3>Bufferd Mode</h3>
  *  Is initialized via {@link #OutputTailStream(int)}.<br>
  *  The tail has a maximum length and always contains the last written data.
  *  
- *      <dir>2. Dynamic Mode</dir>
+ *  <h3>Dynamic Mode</h3>
  *  Is initialized via {@link #OutputTailStream()}.<br>
  *  The length of the tail is dynmic. It always contains the data written since
  *  the last call of {@link #toByteArray()} and {@link #toString()}. In other

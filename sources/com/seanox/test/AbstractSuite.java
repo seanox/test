@@ -34,8 +34,11 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.ClassRule;
 import org.junit.Rule;
+import org.junit.Test;
 import org.junit.rules.ExternalResource;
 import org.junit.rules.TestRule;
 import org.junit.rules.TestWatcher;
@@ -48,7 +51,9 @@ import com.seanox.test.utils.OutputFacadeStream;
 
 /**
  *  AbstractSuite is intended as a basis for implementing complex test
- *  environments.<br>
+ *  environments.
+ *  
+ *  <h3>General</h3>
  *  The test environment is a hierarchical relation of individual tests bundled
  *  in test suites. Test suites can thus combine individual tests and other
  *  partial test suites.<br>
@@ -81,9 +86,86 @@ import com.seanox.test.utils.OutputFacadeStream;
  *  hierarchy.<br>
  *  <br>
  *  The own (Abstract)Suite is the supreme and central static component of all
- *  tests and can use further abstraction layers and sub-suites.
+ *  tests and can use further abstraction layers and sub-suites.<br>
+ *  <pre>
+ *  AbstractSuite
+ *    |
+ *    + AbstractSubSuite (Layer 1)
+ *    .   |
+ *    .   + AbstractSubSuite (Layer n)
+ *    .   |   |
+ *        |   + Test 1
+ *        .   .
+ *        .   .
+ *        .   .
+ *        |   + Test n
+ *        |
+ *        + AbstractSubSuite (Layer n +1)
+ *        .   |
+ *        .   + Test 1
+ *        .   .
+ *            .
+ *            .
+ *            + Test n
+ *  </pre> 
  *  
- *  TODO:
+ *  <h3>What does AbstractSuite do?</h3>
+ *  AbstractSuite takes care of providing the test environment no matter where
+ *  the test is started.<br>
+ *  The mostly static architecture of JUnit provides various possibilities for
+ *  preparation and finalization. However, it is difficult to centralize and
+ *  generalize them.<br>
+ *  AbstractSuite helps with additional interactors (like events).<br>
+ *  It is possible to annotate central methods and sequences that are executed
+ *  with start and end of the test environment, start and end of test classes,
+ *  or executed before and after the execution of tests.<br>
+ *  Additional central I/O interfaces (e.g. {@link System.out} and
+ *  {@link System.err}) are redirected so that they can be better included in
+ *  the tests.
+ *  
+ *  <h3>What do I have to do?</h3>
+ *  A test environment with AbstractSuite is based on hierarchical (sub)suites
+ *  and tests.<br>
+ *  Even if it is a static construction, it is important that all components
+ *  inherit according to this hierarchy. Thus, the test environment knows which
+ *  prerequisites are required for the execution of a test. This allows you to
+ *  start the test at any point in the test environment.
+ *  
+ *  <h3>Interactors (Sequence)</h3>
+ *  {@link Initiate}: Called before the first test and initializes the test
+ *  environment. The corresponding method is annotated. In the hierarchy,
+ *  multiple methods can be annotated, always the most qualified (nearest)
+ *  method is used.<br> 
+ *  <br>
+ *  {@link BeforeClass}: The original JUnit annotation annotates methods that
+ *  are called before or when a test class is initiated. In the hierarchy,
+ *  multiple methods can be annotated, always the most qualified (nearest)
+ *  method is used.<br> 
+ *  <br>
+ *  {@link BeforeTest}: This annotation is used in conjunction with the JUinit
+ *  annotation {@link Test}. It defines a sequence of methods that are executed
+ *  before a test.<br> 
+ *  <br>
+ *  {@link AfterTest}: This annotation is used in conjunction with the JUinit
+ *  annotation {@link Test}. It defines a sequence of methods that are executed
+ *  after a test.<br> 
+ *  <br>
+ *  {@link AfterClass}: The original JUnit annotation annotates methods that
+ *  are called after or when a test class is terminated. In the hierarchy,
+ *  multiple methods can be annotated, always the most qualified (nearest)
+ *  method is used.<br> 
+ *  <br>
+ *  {@link Terminates}: Called after the last test and terminates the test
+ *  environment. The corresponding method is annotated. In the hierarchy,
+ *  multiple methods can be annotated, always the most qualified (nearest)
+ *  method is used.<br> 
+ *  <br>
+ *  AbstractSuite 1.0 20171212<br>
+ *  Copyright (C) 2017 Seanox Software Solutions<br>
+ *  All rights reserved.
+ *
+ *  @author  Seanox Software Solutions
+ *  @version 1.0 20171212
  */
 public abstract class AbstractSuite {
     
@@ -96,8 +178,8 @@ public abstract class AbstractSuite {
     /** interacting method for initiation */
     private static volatile Method initiate;
      
-    /** interacting method for completion */
-    private static volatile Method complete;
+    /** interacting method for termination */
+    private static volatile Method terminate;
     
     /** internal shared system output stream */
     protected final static OutputFacadeStream outputStream = new OutputFacadeStream();
@@ -111,7 +193,7 @@ public abstract class AbstractSuite {
     /** original system error print stream */
     private static volatile PrintStream systemErrorStream;    
     
-    /** bootstrap for initiate and complete the suite */
+    /** bootstrap for initiate and terminate the suite */
     @ClassRule
     public static final ExternalResource suiteBootstrap = new ExternalResource() {
         
@@ -138,35 +220,36 @@ public abstract class AbstractSuite {
             
             if (--AbstractSuite.counter > 0)
                 return;
-            AbstractSuite.completeSuite();
+            AbstractSuite.terminateSuite();
         }
     };
     
-    /**
-     *  TestWatcher to execute onBefore and onAfter methods before and after of
-     *  a test unit. These methods can be used to prepare and finalize
-     *  severally test units. 
-     */
+    /** rule to execute interactors {@link BeforeTest} and {@link AfterTest} */
     @Rule
     public final TestRule suiteTestWatcher = new TestWatcher() {
 
-        @Override
-        protected void starting(Description description) {
+        private void initiate(Description description, Class<? extends Annotation> type) {
             
-            Class<?> source = description.getTestClass();
+            Class<?> source;
+            Method   method;
+            
+            source = description.getTestClass();
             try {AbstractSuite.trace(source, source.getDeclaredMethod(description.getMethodName()));
             } catch (NoSuchMethodException | SecurityException exception) {
                 throw new RuntimeException(exception);
             }
-
-            String methodName;
-            methodName = description.getMethodName();
-            methodName = Character.toUpperCase(methodName.charAt(0)) + methodName.substring(1);
-            methodName = "onBefore" + methodName;
+            
             try {
-                Method method = AbstractSuite.this.getClass().getDeclaredMethod(methodName);
-                method.setAccessible(true);
-                method.invoke(AbstractSuite.this);
+                source = AbstractSuite.this.getClass();
+                method = source.getDeclaredMethod(description.getMethodName());
+                for (Annotation annotation : method.getAnnotationsByType(type)) {
+                    if (annotation instanceof BeforeTest)
+                        for (String name : ((BeforeTest)annotation).value())
+                            Accession.invoke(AbstractSuite.this, name);
+                    if (annotation instanceof AfterTest)
+                        for (String name : ((AfterTest)annotation).value())
+                            Accession.invoke(AbstractSuite.this, name);
+                }
             } catch (NoSuchMethodException exception) {
             } catch (Exception exception) {
                 throw new RuntimeException(exception);
@@ -174,20 +257,13 @@ public abstract class AbstractSuite {
         }
         
         @Override
+        protected void starting(Description description) {
+            this.initiate(description, BeforeTest.class);
+        }
+        
+        @Override
         protected void finished(Description description) {
-            
-            String methodName;
-            methodName = description.getMethodName();
-            methodName = Character.toUpperCase(methodName.charAt(0)) + methodName.substring(1);
-            methodName = "onAfter" + methodName;
-            try {
-                Method method = AbstractSuite.this.getClass().getDeclaredMethod(methodName);
-                method.setAccessible(true);
-                method.invoke(AbstractSuite.this);
-            } catch (NoSuchMethodException exception) {
-            } catch (Exception exception) {
-                throw new RuntimeException(exception);
-            } 
+            this.initiate(description, AfterTest.class);
         }
     };    
     
@@ -212,7 +288,7 @@ public abstract class AbstractSuite {
         AbstractSuite.trace = new ArrayList<>();
 
         AbstractSuite.initiate = AbstractSuite.locateInteract(Initiate.class, herachie);
-        AbstractSuite.complete = AbstractSuite.locateInteract(Complete.class, herachie);
+        AbstractSuite.terminate = AbstractSuite.locateInteract(Terminate.class, herachie);
         
         AbstractSuite.systemOutputStream = System.out;
         AbstractSuite.outputStream.mount(AbstractSuite.systemOutputStream);
@@ -233,12 +309,12 @@ public abstract class AbstractSuite {
         }
     }
 
-    private static void completeSuite() {
+    private static void terminateSuite() {
 
         try {
-            if (AbstractSuite.complete != null) {
-                AbstractSuite.complete.setAccessible(true);
-                try {AbstractSuite.complete.invoke(null);
+            if (AbstractSuite.terminate != null) {
+                AbstractSuite.terminate.setAccessible(true);
+                try {AbstractSuite.terminate.invoke(null);
                 } catch (Throwable throwable) {
                     if (throwable instanceof InvocationTargetException)
                         throwable = ((InvocationTargetException)throwable).getTargetException();
@@ -280,17 +356,53 @@ public abstract class AbstractSuite {
             System.out.println("[" + source.getName() + "] -> " + method.getName());
     }
     
-    //TODO:
+    /**
+     *  Annotates a method, which is called before the first test is execuded
+     *  and initializes the test environment. The corresponding method is
+     *  annotated. In the hierarchy, multiple methods can be annotated, always
+     *  the most qualified (nearest) method is used.
+     */
     @Documented
     @Target(ElementType.METHOD)
     @Retention(RetentionPolicy.RUNTIME)
     protected static @interface Initiate {
     }
 
-    //TODO:
+    /**
+     *  Annotates a method, which is called after the last test has been
+     *  executed and initializes the test environment. The corresponding method
+     *  is annotated. In the hierarchy, multiple methods can be annotated,
+     *  always the most qualified (nearest) method is used.
+     */
     @Documented
     @Target(ElementType.METHOD)
     @Retention(RetentionPolicy.RUNTIME)
-    protected static @interface Complete {
+    protected static @interface Terminate {
     }
+    
+    /**
+     *  Annotates a method, which is called before a test is execuded and
+     *  prepares the test environment. This annotation supports sequences,
+     *  meaning that a sequence of methods can be defined here, which are
+     *  called one after the other.
+     */
+    @Documented
+    @Target(ElementType.METHOD)
+    @Retention(RetentionPolicy.RUNTIME)
+    protected static @interface BeforeTest {
+        String[] value();
+    }
+
+    /**
+     *  Annotates a method, which is called after a test has been execuded
+     *  and restores the test environment. This annotation supports sequences,
+     *  meaning that a sequence of methods can be defined here, which are
+     *  called one after the other.
+     */
+    @Documented
+    @Target(ElementType.METHOD)
+    @Retention(RetentionPolicy.RUNTIME)
+    protected static @interface AfterTest {
+        String[] value();
+    }    
 }
