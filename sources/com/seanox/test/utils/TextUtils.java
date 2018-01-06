@@ -32,12 +32,12 @@ import java.util.regex.Pattern;
 /**
  *  Utilities for text and strings.<br>
  *  <br>
- *  TextUtils 1.0 20180102<br>
+ *  TextUtils 1.1 20180106<br>
  *  Copyright (C) 2018 Seanox Software Solutions<br>
  *  All rights reserved.
  *
  *  @author  Seanox Software Solutions
- *  @version 1.0 20180102
+ *  @version 1.1 20180106
  */
 public class TextUtils {
     
@@ -76,10 +76,10 @@ public class TextUtils {
     }
     
     /**
-     *  Dekodiert alle Ausgabe-Direktiven nach einem Backslash.
-     *  Die Methode ist tollerant und erh&auml;t fehlerhafte Direktiven.
-     *  @param  string zu dekodierender String
-     *  @return der dekodierte String
+     *  Decodes all output directives after a backslash.
+     *  The method is tollerant and keeps incorrect directives.
+     *  @param  string string to be decoded 
+     *  @return the decoded string
      */
     public static String unescape(String string) {
         
@@ -118,11 +118,11 @@ public class TextUtils {
     }
     
     /**
-     *  Kodiert im String die Steuerzeichen: BS, HT, LF, FF, CR, ', ",  \ und
-     *  alle Zeichen ausserhalb vom ASCII-Bereich 0x20-0x7F. Die Maskierung
-     *  erfolgt per Slash + ISO oder dem Hexadezimal-Wert.
-     *  @param  string zu maskierender String
-     *  @return der String mit den ggf. maskierten Zeichen.
+     *  Encodes the control characters: BS, HT, LF, FF, CR, ', ", \ and all
+     *  characters outside the ASCII range 0x20-0x7F. The escaping is done by
+     *  Slash + ISO or the hexadecimal value.
+     *  @param  string string to be escaped
+     *  @return the escaped string
      */
     public static String escape(String string) {
         
@@ -163,6 +163,35 @@ public class TextUtils {
         
         return new String(Arrays.copyOfRange(cache, 0, count));        
     }
+    
+    /**
+     *  Returns a string without any leading and trailing white spaces.
+     *  The value {@code null} becomes an empty string. 
+     *  @param  string string to be trimemd
+     *  @return string without any leading and trailing white spaces
+     */ 
+    public static String trim(String string) {
+        return TextUtils.trim(string, false);
+    }
+    
+    /**
+     *  Returns a string without any leading and trailing white spaces.
+     *  The value {@code null} becomes an empty string. If <i>nullable</i> is
+     *  {@code true}, {@code null} is returned if the string is empty.
+     *  @param  string   string to be trimemd
+     *  @param  nullable {@code true} returns {@code null} if string is empty
+     *  @return string without any leading and trailing white spaces
+     *          or {@code null} is used <i>nullable</i> and the string is empty
+     */     
+    public static String trim(String string, boolean nullable) {
+        
+        if (string == null) {
+            if (nullable)
+                return null;
+            string = "";
+        } else string = string.trim();
+        return string.isEmpty() && nullable ? null : string; 
+    }
 
     /**
      *  Natural sorting of strings with alphanumeric content.
@@ -178,37 +207,34 @@ public class TextUtils {
     
     /** Naturally sort comparator */
     private static class NaturalComparator implements Comparator<String> {
+        
+        /**
+         *  Normalizes the numeric fragments that they can be sorted.
+         *  @param  string string to be escaped
+         *  @return the normalized string
+         */
+        private static String normalize(String string) {
+            
+            string = TextUtils.trim(string);
+            String buffer = "";
+            for (String fragment : string.split("(?:(?<=\\d)(?!\\d))|(?:(?<!\\d)(?=\\d))")) {
+                try {
+                    fragment = Long.valueOf(fragment).toString();
+                    fragment = Long.toString(fragment.length(), 36).toUpperCase() + fragment;
+                } catch (Exception exception) {
+                }
+                buffer += fragment;
+            }
+            return buffer;
+        }
 
         @Override
-        public int compare(String o1, String o2) {
+        public int compare(String string1, String string2) {
 
-            o1 = o1 == null ? "" : o1.trim();
-            o1 = o1.replaceAll("\\x00", " ");
-            o1 = o1.replaceAll("(\\d+)", "\00$1\00");
-            String o11 = "";
-            for (String s : o1.split("\\00")) {
-                try {
-                    s = Long.valueOf(s).toString();
-                    s = Long.toString(s.length(), 36).toUpperCase() + s;
-                } catch (Exception exception) {
-                }
-                o11 += s;
-            }
+            string1 = NaturalComparator.normalize(string1);
+            string2 = NaturalComparator.normalize(string2);
             
-            o2 = o2 == null ? "" : o2.trim();
-            o2 = o2.replaceAll("\\x00", " ");
-            o2 = o2.replaceAll("(\\d+)", "\00$1\00");
-            String o22 = "";
-            for (String s : o2.split("\\00")) {
-                try {
-                    s = Long.valueOf(s).toString();
-                    s = Long.toString(s.length(), 36).toUpperCase() + s;
-                } catch (Exception exception) {
-                }
-                o22 += s;
-            }
-            
-            return o11.compareTo(o22);
+            return string1.compareTo(string2);
         }
     }
 }

@@ -251,6 +251,8 @@ public abstract class AbstractSuite {
                             Accession.invoke(AbstractSuite.this, name);
                 }
             } catch (NoSuchMethodException exception) {
+            } catch (InvocationTargetException exception) {
+                throw new RuntimeException(exception.getTargetException());
             } catch (Exception exception) {
                 throw new RuntimeException(exception);
             }
@@ -274,7 +276,7 @@ public abstract class AbstractSuite {
                 return null;
             if (!AbstractSuite.class.isAssignableFrom(source))
                 continue;
-            Method[] methods = Annotations.findMethods(source, annotation);
+            Method[] methods = Annotations.getMethods(source, annotation);
             if (methods == null
                     || methods.length <= 0)
                 continue;

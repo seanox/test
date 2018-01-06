@@ -72,8 +72,7 @@ public class StreamUtils {
 
         byte[] bytes = new byte[65535];
         ByteArrayOutputStream result = new ByteArrayOutputStream();
-        int size;
-        while ((size = input.read(bytes)) >= 0) {
+        for (int size; (size = input.read(bytes)) >= 0;) {
             result.write(bytes, 0, size);
             if (smart && input.available() <= 0
                     && result.size() > 0)
@@ -117,8 +116,8 @@ public class StreamUtils {
             throws IOException {
 
         input.skip(offset);
-        long volume = 0;
         byte[] bytes = new byte[65535];
+        long volume = 0;
         for (int length = 0;
                 (length = input.read(bytes)) >= 0;
                 volume +=length)
@@ -159,8 +158,7 @@ public class StreamUtils {
         
         byte[] bytes = new byte[65535];
         ByteArrayOutputStream result = new ByteArrayOutputStream(0);
-        int size;
-        while ((size = input.read(bytes)) >= 0) {
+        for (int size; (size = input.read(bytes)) >= 0;) {
             result.write(bytes, 0, size);
             if (result.size() > length) {
                 byte[] temp = result.toByteArray();
