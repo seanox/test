@@ -28,6 +28,14 @@
   <property name="compile.optimize" value="on"/>
   <property name="compile.deprecation" value="on"/>
   
+  <path id="classpath">
+    <fileset dir="${workspace.libraries}">
+      <include name="*.jar"/>
+      <exclude name="*javadoc.jar"/>
+      <exclude name="*sources.jar"/>      
+    </fileset>
+  </path>  
+  
   <macrodef name="release-locate">
     <sequential>
       <copy file="${workspace.development}/release.txt" tofile="${workspace.development}/release.tmp" overwrite="true"/>
@@ -87,10 +95,9 @@
     <zip destfile="${workspace.libraries}/seanox-${ant.project.name}-${release.version}-sources.jar"
       basedir="${build.sources}" compress="true" filesonly="true"/>    
     <mkdir dir="${build.classes}"/>    
-    <javac srcdir="${build.sources}" destdir="${build.classes}" 
+    <javac srcdir="${build.sources}" destdir="${build.classes}" classpathref="classpath"
       source="${compile.source}" target="${compile.target}" includeantruntime="false"
       debug="${compile.debug}" optimize="${compile.optimize}" deprecation="${compile.deprecation}">
-      <compilerarg value="-Xlint:-options"/>
     </javac>
     <touch datetime="${release.date}" pattern="yyyyMMdd">
       <fileset dir="${build.classes}"/>
@@ -99,7 +106,7 @@
       basedir="${build.classes}" compress="true" filesonly="true"/>    
     
     <echo file="${build}/overview.html"><![CDATA[<html><body></body></html>]]></echo>
-    <javadoc destdir="${build.javadoc}" windowtitle="Seanox Test API"
+    <javadoc destdir="${build.javadoc}" windowtitle="Seanox Test API" classpathref="classpath"
       author="true" version="true" use="true" linksource="true" noqualifier="all" overview="${build}/overview.html">
       <fileset dir="${build.sources}" defaultexcludes="yes"/>
       <doctitle>
@@ -128,6 +135,16 @@
         51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
         ]]>
       </doctitle>
+      <header>
+        <![CDATA[
+        <style type="text/css">
+          div.block > pre {margin:1em;}
+          div.block > h1 {font-size:2em; font-style:normal;}
+          div.block > h2 {font-size:1.5em; font-style:normal;}
+          div.block > h3 {font-size:1em; font-style:normal;}
+        </style>
+        ]]>
+      </header>
       <link offline="false" href="https://docs.oracle.com/javase/${compile.source}/docs/api/"/>
     </javadoc>
     <delete file="${build}/overview.html"/>

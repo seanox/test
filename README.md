@@ -115,8 +115,22 @@ TODO:
 TODO:
 
 # Changes (Change Log)
-## 1.0.0 20171212 (summary of the current version)  
-NT: Test steht als Release bereit.  
+## 1.1.0 2018xxxx (summary of the next version)  
+BF: JavaDoc - general corrections and optimizations of layout  
+BF: HttpUtils - correction of the hard coded keystore password  
+CR: AbstractSuite - added as a help for implementing hierarchical test environments  
+CR: Accession - Optimization / Redesign  
+CR: Annotations - added as utilities for easy access to annotations  
+CR: Executor - Optimization  
+CR: FileUtils - Optimization  
+CR: HttpUtils - Optimization  
+CR: OutputStreams renamed in OutputFacadeStream  
+CR: OutputStreamTail renamed in OutputTailStream  
+CR: ResourceUtils - Optimization  
+CR: StreamUtils - Optimization  
+CR: SystemInfo - added for platform specific information about the used operating system  
+CR: TextUtils.java - Optimization / Enhancement  
+CR: Timing - added as simple time measurement and testing  
 
 [Read more](https://raw.githubusercontent.com/seanox/test/master/CHANGES)
 

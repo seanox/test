@@ -1,2 +1,26 @@
+1.1.0 2018xxxx
+  BF: JavaDoc - general corrections and optimizations of layout
+  BF: HttpUtils - correction of the hard coded keystore password
+  CR: AbstractSuite - added as a help for implementing hierarchical test environments
+  CR: Accession - Optimization / Redesign
+  CR: Annotations - added as utilities for easy access to annotations
+  CR: Executor - Optimization
+      - Status: change from constants to enum
+  CR: FileUtils - Optimization
+      - method transmitFile: renamed in transmit
+  CR: HttpUtils - Optimization
+      - method sendRequest: added new versions with timeout
+  CR: OutputStreams renamed in OutputFacadeStream
+  CR: OutputStreamTail renamed in OutputTailStream
+  CR: ResourceUtils - Optimization
+      - shortening of the method names, the 'context' in the name is omitted
+  CR: StreamUtils - Optimization
+      - method forward: renamed in transmit
+  CR: SystemInfo - added for platform specific information about the used operating system 
+  CR: TextUtils.java - Optimization / Enhancement
+      - method trim: added to trim and trim to null
+      - NaturalComparator: optimisation
+  CR: Timing - added as simple time measurement and testing
+
 1.0.0 20171212
-  NT: Test steht als Release bereit.
+  NT: Test is available as a release.
