@@ -32,12 +32,12 @@ import java.util.regex.Pattern;
 /**
  *  Utilities for text and strings.<br>
  *  <br>
- *  TextUtils 1.1 20180106<br>
+ *  TextUtils 1.1.1 20180107<br>
  *  Copyright (C) 2018 Seanox Software Solutions<br>
  *  All rights reserved.
  *
  *  @author  Seanox Software Solutions
- *  @version 1.1 20180106
+ *  @version 1.1.1 20180107
  */
 public class TextUtils {
     
@@ -64,8 +64,7 @@ public class TextUtils {
         while (true) {
             Matcher matcher = pattern.matcher(string);
             if (!matcher.find()) {
-                if (string.length() > 0)
-                    result.add(string);
+                result.add(string);
                 break;
             }
             result.add(string.substring(0, matcher.start()));
