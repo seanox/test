@@ -18,13 +18,13 @@ Test Environment
       .   .
       |   + Test 1.1.n
       | 
-       + Suite 1.n
-       .   |
-       .   + Test 1.n.1
-       .   .
-           .
-           .
-           + Test 1.n.n
+      + Suite 1.n
+      .   |
+      .   + Test 1.n.1
+      .   .
+          .
+          .
+          + Test 1.n.n
 ```
   
 In a good test environment the test can be started at any place.  
@@ -50,13 +50,13 @@ AbstractSuite
       .   .
       |   + Test n
       |
-       + AbstractSubSuite (Layer n +1)
-       .   |
-       .   + Test 1
-       .   .
-           .
-           .
-           + Test n
+      + AbstractSubSuite (Layer n +1)
+      .   |
+      .   + Test 1
+      .   .
+          .
+          .
+          + Test n
 ```  
 
 ## What does AbstractSuite do?
