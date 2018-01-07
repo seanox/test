@@ -1,5 +1,84 @@
 # Description
-Extended API for JUnit tests.
+AbstractSuite an extended API for JUnit tests.
+
+A test environment is a hierarchical relation of individual tests bundled in
+test suites. Test suites can thus combine individual tests and other partial
+test suites.
+
+```
+Test Environment
+  |
+  + Suite 1
+  .   |
+  .   + Suite 1.1
+  .   |   |
+      |   + Test 1.1.1
+      .   .
+      .   .
+      .   .
+      |   + Test 1.1.n
+      | 
+       + Suite 1.n
+       .   |
+       .   + Test 1.n.1
+       .   .
+           .
+           .
+           + Test 1.n.n
+```
+  
+In a good test environment the test can be started at any place.  
+This presupposes that each test can completely prepare, use and terminate the
+test environment.
+
+AbstractSuite should help here and simplify the implementation of the test
+hierarchy.
+
+The own (Abstract)Suite is the supreme and central static component of all tests
+and can use further abstraction layers and sub-suites.
+
+```
+AbstractSuite
+  |
+  + AbstractSubSuite (Layer 1)
+  .   |
+  .   + AbstractSubSuite (Layer n)
+  .   |   |
+      |   + Test 1
+      .   .
+      .   .
+      .   .
+      |   + Test n
+      |
+       + AbstractSubSuite (Layer n +1)
+       .   |
+       .   + Test 1
+       .   .
+           .
+           .
+           + Test n
+```  
+
+## What does AbstractSuite do?
+AbstractSuite takes care of providing the test environment no matter where the
+test is started.  
+The mostly static architecture of JUnit provides various possibilities for
+preparation and finalization. However, it is difficult to centralize and
+generalize them.  
+AbstractSuite helps with additional interactors (like events).  
+It is possible to annotate central methods and sequences that are executed with
+start and end of the test environment, start and end of test classes, or
+executed before and after the execution of tests.  
+Additional central I/O interfaces (e.g. System.out and System.err) are
+redirected so that they can be better included in the tests.
+ 
+## What do I have to do?
+A test environment with AbstractSuite is based on hierarchical (sub)suites and
+tests.  
+Even if it is a static construction, it is important that all components inherit
+according to this hierarchy. Thus, the test environment knows which
+prerequisites are required for the execution of a test. This allows you to start
+the test at any point in the test environment. 
 
 
 # Licence Agreement
