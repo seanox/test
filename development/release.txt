@@ -19,7 +19,7 @@
   CR: SystemInfo - added for platform specific information about the used operating system 
   CR: TextUtils.java - Optimization / Enhancement
       - method trim: added to trim and trim to null
-      - NaturalComparator: optimisation
+      - NaturalComparator: optimization
   CR: Timing - added as simple time measurement and testing
 
 1.0.0 20171212
