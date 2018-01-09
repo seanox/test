@@ -19,6 +19,11 @@
   CR: SystemInfo - added for platform specific information about the used operating system 
   CR: TextUtils.java - Optimization / Enhancement
       - method trim: added to trim and trim to null
+      - method escape / unescape: added to ...
+      - method decorate / undecorate: correction to use octal for ASCII-range 0x00 - 0x20 / 0x80 - 0xFF
+      - method decorate / undecorate: enhancement to use four bytes hexadecimal for ASCII-range 0x100 - 0xFFFF
+      - method phonetic: added to the computation of phonetic values
+      - method replace: added to replace characters case-insensitive in a string
       - NaturalComparator: optimization
   CR: Timing - added as simple time measurement and testing
 
