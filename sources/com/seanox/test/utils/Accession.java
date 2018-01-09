@@ -39,12 +39,12 @@ import java.util.Objects;
  *  methods of any Java object, even those that are not public or in a 
  *  superclass. Failed accesses and releases can cause various exceptions.<br>
  *  <br>
- *  Accession 2.0 20180106<br>
+ *  Accession 2.0.1 20180107<br>
  *  Copyright (C) 2018 Seanox Software Solutions<br>
  *  All rights reserved.
  *
  *  @author  Seanox Software Solutions
- *  @version 2.0 20180106
+ *  @version 2.0.1 20180107
  */
 public class Accession {
 
@@ -58,13 +58,12 @@ public class Accession {
      *  @param  object object
      *  @return the source class for the object
      */
-    @SuppressWarnings("rawtypes")
-    private static Class getSourceClass(Object object) {
+    private static Class<?> getSourceClass(Object object) {
         
         if (object == null)
             return null;
         if (object instanceof Class)
-            return (Class)object;
+            return (Class<?>)object;
         return object.getClass();
     }
     
