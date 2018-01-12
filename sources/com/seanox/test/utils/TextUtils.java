@@ -218,9 +218,10 @@ public class TextUtils {
     }
 
     /**
-     *  Decodes all escape sequences ({@code \b \t \n \f \r \" \' \\}) three
-     *  bytes of octal escape sequences ({@code \00-\FF}) after a
-     *  backslash. The method is tollerant and keeps incorrect sequences.
+     *  Decodes all escape sequences ({@code \b \t \n \f \r \" \' \\}), three
+     *  bytes of octal escape sequences ({@code \000-\377}) and four bytes
+     *  hexadecimal ({@code \u0000-\uFFFF}) after a backslash.
+     *  The method works tollerant and keeps incorrect sequences.
      *  If {@code null} is passed, {@code null} is returned.
      *  @param  string string to be decoded 
      *  @return the decoded string

@@ -4,7 +4,7 @@
  *  Diese Software unterliegt der Version 2 der GNU General Public License.
  *
  *  Seanox Test SDK
- *  Copyright (C) 2017 Seanox Software Solutionss
+ *  Copyright (C) 2018 Seanox Software Solutionss
  *
  *  This program is free software; you can redistribute it and/or modify it
  *  under the terms of version 2 of the GNU General Public License as published
@@ -26,7 +26,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.net.Socket;
 import java.security.GeneralSecurityException;
 import java.security.KeyStore;
@@ -45,12 +44,12 @@ import javax.net.ssl.TrustManagerFactory;
 /**
  *  Utilities for HTTP(S) connections.<br>
  *  <br>
- *  HttpUtils 1.0 20171212<br>
- *  Copyright (C) 2017 Seanox Software Solutions<br>
+ *  HttpUtils 1.0.1 20180112<br>
+ *  Copyright (C) 2018 Seanox Software Solutions<br>
  *  All rights reserved.
  *
  *  @author  Seanox Software Solutions
- *  @version 1.0 20171212
+ *  @version 1.0.1 20180112
  */
 public class HttpUtils {
     
@@ -365,9 +364,8 @@ public class HttpUtils {
         try (Socket socket = HttpUtils.createSocket(address, keystore, timeout)) {
             if (request != null) {
                 OutputStream output = socket.getOutputStream();
-                PrintWriter writer = new PrintWriter(output);
-                writer.print(request);
-                writer.flush();
+                output.write(request.getBytes());
+                output.flush();
                 if (data != null)
                     StreamUtils.transmit(data, output);
             }
