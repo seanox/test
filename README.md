@@ -107,15 +107,15 @@ TODO:
 
 
 # Downloads
-[Seanox Test 1.0.0](https://github.com/seanox/test/raw/master/releases/seanox-test-1.0.0.zip)  
-[Seanox Test Sources 1.0.0](https://github.com/seanox/test/raw/master/releases/seanox-test-1.0.0-src.zip)  
+[Seanox Test 1.1.0](https://github.com/seanox/test/raw/master/releases/seanox-test-1.1.0.zip)  
+[Seanox Test Sources 1.1.0](https://github.com/seanox/test/raw/master/releases/seanox-test-1.1.0-src.zip)  
 
 
 # Installation
 TODO:
 
 # Changes (Change Log)
-## 1.1.0 2018xxxx (summary of the next version)  
+## 1.1.0 20180505 (summary of the current version)  
 BF: JavaDoc - general corrections and optimizations of layout  
 BF: HttpUtils - correction of the hard coded keystore password  
 CR: AbstractSuite - added as a help for implementing hierarchical test environments  

@@ -1,4 +1,4 @@
-1.1.0 2018xxxx
+1.1.0 20180505
   BF: JavaDoc - general corrections and optimizations of layout
   BF: HttpUtils - correction of the hard coded keystore password
   CR: AbstractSuite - added as a help for implementing hierarchical test environments
