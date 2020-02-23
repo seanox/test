@@ -1,3 +1,16 @@
+<p>
+  <a href="https://github.com/seanox/test/pulls"
+      title="Development is waiting for new issues / requests / ideas">
+    <img src="https://img.shields.io/badge/development-passive-blue?style=for-the-badge">
+  </a>
+  <a href="https://github.com/seanox/test/issues">
+    <img src="https://img.shields.io/badge/maintenance-active-green?style=for-the-badge">
+  </a>
+  <a href="http://seanox.de/contact">
+    <img src="https://img.shields.io/badge/support-active-green?style=for-the-badge">
+  </a>
+</p>
+
 # Description
 AbstractSuite an extended API for JUnit tests.
 
@@ -136,10 +149,9 @@ CR: Timing - added as simple time measurement and testing
 
 
 # Contact
-[Support](http://seanox.de/contact?support)  
-[Development](http://seanox.de/contact?development)  
-[Project](http://seanox.de/contact?service)  
-[Page](http://seanox.de/contact)  
+[Issues](https://github.com/seanox/test/issues)  
+[Requests](https://github.com/seanox/test/pulls)  
+[Mail](http://seanox.de/contact)
 
 
 # Thanks!
