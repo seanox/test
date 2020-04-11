@@ -4,7 +4,7 @@
  *  Diese Software unterliegt der Version 2 der GNU General Public License.
  *
  *  Seanox Test SDK
- *  Copyright (C) 2017 Seanox Software Solutions
+ *  Copyright (C) 2020 Seanox Software Solutions
  *
  *  This program is free software; you can redistribute it and/or modify it
  *  under the terms of version 2 of the GNU General Public License as published
@@ -24,12 +24,12 @@ package com.seanox.test.utils;
 /**
  *  Pattern for regular expressions.<br>
  *  <br>
- *  Pattern 1.0 20171212<br>
- *  Copyright (C) 2017 Seanox Software Solutions<br>
+ *  Pattern 1.0.1 20200411<br>
+ *  Copyright (C) 2020 Seanox Software Solutions<br>
  *  All rights reserved.
  *
  *  @author  Seanox Software Solutions
- *  @version 1.0 20171212
+ *  @version 1.0.1 20200411
  */
 public class Pattern {
     
@@ -111,7 +111,7 @@ public class Pattern {
     public static String ACCESS_LOG_STATUS(String code) {
         
         code = code == null ? "-" : "\\Q" + code + "\\E";
-        return "^" + NETWORK_DOMAIN_FRAGMENT + " - (-|\"[^\"]+\") \\[[^]]+\\] (-|\"[^\"]+\") " + code + " (\\d+|-) - -$";
+        return "^" + NETWORK_DOMAIN_FRAGMENT + " - (-|\"[^\"]+\") \\[[^]]+\\] (-|\"[^\"]+\") " + code + " (\\d+|-) (-|\".*?\") (-|\".*?\")$";
     }
     
     /** 
@@ -139,7 +139,7 @@ public class Pattern {
             request = TextUtils.escape(request);
         }
         request = request == null ? "-" : "\\Q\"" + request + "\"\\E"; 
-        return "^" + NETWORK_DOMAIN_FRAGMENT + " - (-|\"[^\"]+\") \\[[^]]+\\] " + request + " " + code + " " + length + " - -$";
+        return "^" + NETWORK_DOMAIN_FRAGMENT + " - (-|\"[^\"]+\") \\[[^]]+\\] " + request + " " + code + " " + length + " (-|\".*?\") (-|\".*?\")$";
     }
     
     /** 
@@ -158,7 +158,7 @@ public class Pattern {
         }
         request = request == null ? "-" : "\\Q\"" + request + "\"\\E"; 
         user = user == null ? "-" : "\\Q\"" + user + "\"\\E";
-        return "^" + NETWORK_DOMAIN_FRAGMENT + " - " + user + " \\[[^]]+\\] " + request + " " + code + " (\\d+|-) - -$";
+        return "^" + NETWORK_DOMAIN_FRAGMENT + " - " + user + " \\[[^]]+\\] " + request + " " + code + " (\\d+|-) (-|\".*?\") (-|\".*?\")$";
     }
     
     /** 
