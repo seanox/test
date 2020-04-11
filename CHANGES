@@ -1,3 +1,9 @@
+1.2.0 2020xxxx
+  CR: Pattern: Update of ACCESS_LOG_STATUS
+  CR: OutputFacadeStream Write: Add a flush
+  CR: OutputFacadeStream Capture: Added various await methods
+  CR: Build: Update to use CHANGES as release notes
+
 1.1.0 20180505
   BF: JavaDoc - general corrections and optimizations of layout
   BF: HttpUtils - correction of the hard coded keystore password

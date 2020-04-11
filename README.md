@@ -100,7 +100,7 @@ Seanox Software Solutions oder kurz Seanox genannt.
 
 Diese Software unterliegt der Version 2 der GNU General Public License.
 
-Copyright (C) 2017 Seanox Software Solutions
+Copyright (C) 2020 Seanox Software Solutions
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of version 2 of the GNU General Public License as published by the
@@ -128,22 +128,11 @@ TODO:
 TODO:
 
 # Changes (Change Log)
-## 1.1.0 20180505 (summary of the current version)  
-BF: JavaDoc - general corrections and optimizations of layout  
-BF: HttpUtils - correction of the hard coded keystore password  
-CR: AbstractSuite - added as a help for implementing hierarchical test environments  
-CR: Accession - Optimization / Redesign  
-CR: Annotations - added as utilities for easy access to annotations  
-CR: Executor - Optimization  
-CR: FileUtils - Optimization  
-CR: HttpUtils - Optimization  
-CR: OutputStreams renamed in OutputFacadeStream  
-CR: OutputStreamTail renamed in OutputTailStream  
-CR: ResourceUtils - Optimization  
-CR: StreamUtils - Optimization  
-CR: SystemInfo - added for platform specific information about the used operating system  
-CR: TextUtils.java - Optimization / Enhancement  
-CR: Timing - added as simple time measurement and testing  
+## 1.2.0 2020xxxx (summary of the next version)  
+CR: Pattern: Update of ACCESS_LOG_STATUS  
+CR: OutputFacadeStream Write: Add a flush  
+CR: OutputFacadeStream Capture: Added various await methods  
+CR: Build: Update to use CHANGES as release notes  
 
 [Read more](https://raw.githubusercontent.com/seanox/test/master/CHANGES)
 
