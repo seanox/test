@@ -4,7 +4,7 @@
  *  Diese Software unterliegt der Version 2 der GNU General Public License.
  *
  *  Seanox Test SDK
- *  Copyright (C) 2017 Seanox Software Solutions
+ *  Copyright (C) 2020 Seanox Software Solutions
  *
  *  This program is free software; you can redistribute it and/or modify it
  *  under the terms of version 2 of the GNU General Public License as published
@@ -71,12 +71,12 @@ import com.seanox.test.utils.Executor.Worker.Filter;
  *      }
  *  }
  *  </pre>
- *  Executor 1.0 20171212<br>
- *  Copyright (C) 2017 Seanox Software Solutions<br>
+ *  Executor 1.0.1 20200415<br>
+ *  Copyright (C) 2020 Seanox Software Solutions<br>
  *  All rights reserved.
  *
  *  @author  Seanox Software Solutions
- *  @version 1.0 20171212
+ *  @version 1.0.1 20200415
  */
 public class Executor {
 
@@ -165,7 +165,7 @@ public class Executor {
 
         Executor executor = new Executor();
         for (int loop = 0; loop < size; loop++) {
-            Worker instance = worker.newInstance();
+            Worker instance = worker.getDeclaredConstructor().newInstance();
             instance.prepare();
             Thread thread = new Thread() {
                 @Override
