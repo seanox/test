@@ -117,7 +117,7 @@ public class HttpUtils {
     /**
      *  Checks exists one or a set of response header fields.
      *  @param  response response
-     *  @param  field    field
+     *  @param  fields   fields
      *  @return {@code true} if all passed fields exists
      */
     public static boolean exitsResponseHeader(String response, String... fields) {
