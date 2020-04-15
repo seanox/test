@@ -38,15 +38,15 @@
   
   <macrodef name="release-locate">
     <sequential>
-      <copy file="${workspace.development}/release.txt" tofile="${workspace.development}/release.tmp" overwrite="true"/>
-      <replaceregexp file="${workspace.development}/release.tmp"
+      <copy file="${workspace}/CHANGES" tofile="${workspace}/CHANGES.tmp" overwrite="true"/>
+      <replaceregexp file="${workspace}/CHANGES.tmp"
         match="(?s)^\s*([\d\.x]+) (\d{4})([\dx]+).*$" flags="g" byline="false"
         replace="release.version=\1&#x000D;release.year=\2&#x000D;release.date=\2\3&#x000D;"/>
-      <replaceregexp file="${workspace.development}/release.tmp" match="x+" replace="0000" flags="g" byline="false"/>
+      <replaceregexp file="${workspace}/CHANGES.tmp" match="x+" replace="0000" flags="g" byline="false"/>
       <loadproperties>
-        <file file="${workspace.development}/release.tmp"/>
+        <file file="${workspace}/CHANGES.tmp"/>
       </loadproperties>
-      <delete file="${workspace.development}/release.tmp"/>
+      <delete file="${workspace}/CHANGES.tmp"/>
     </sequential>
   </macrodef>  
   
@@ -166,13 +166,14 @@
   <fileset id="fileset.archive.source" dir="${workspace}" defaultexcludes="false">
     <include name=".settings/org.eclipse.jdt.core.prefs"/> 
     <include name="development/build.xml"/>
-    <include name="development/release.txt"/>
     <include name="libraries/**/*"/>
     <exclude name="libraries/**/seanox-${ant.project.name}*"/>
     <include name="sources/**/*"/>
     <include name=".classpath"/>
-    <include name=".license"/>
     <include name=".project"/>
+    <include name="CHANGES"/>
+    <include name="LICENSE"/>
+    <include name="README.md"/>
     <exclude name="**/.git*"/>
   </fileset>   
   
@@ -180,8 +181,8 @@
     <delete dir="${build}"/>
     <mkdir dir="${build}"/>
     <mkdir dir="${build.project}"/>
-    <copy file="${workspace}/.license" tofile="${build.project}/seanox-${ant.project.name}-${release.version}.license"/>
-    <copy file="${workspace.development}/release.txt" tofile="${build.project}/seanox-${ant.project.name}-${release.version}.release"/>
+    <copy file="${workspace}/LICENSE" tofile="${build.project}/seanox-${ant.project.name}-${release.version}.license"/>
+    <copy file="${workspace}/CHANGES" tofile="${build.project}/seanox-${ant.project.name}-${release.version}.release"/>
     <copy todir="${build.project}">
       <fileset dir="${workspace.libraries}">
         <include name="seanox-${ant.project.name}-${release.version}*"/>
