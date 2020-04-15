@@ -3,6 +3,8 @@
   CR: OutputFacadeStream Write: Add a flush
   CR: OutputFacadeStream Capture: Added various await methods
   CR: Build: Update to use CHANGES as release notes
+  CR: Hamcrest: Update version 2.2
+  CR: JUnit: Update version 4.13
 
 1.1.0 20180505
   BF: JavaDoc - general corrections and optimizations of layout
