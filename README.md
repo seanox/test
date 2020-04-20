@@ -120,19 +120,21 @@ TODO:
 
 
 # Downloads
-[Seanox Test 1.1.0](https://github.com/seanox/test/raw/master/releases/seanox-test-1.1.0.zip)  
-[Seanox Test Sources 1.1.0](https://github.com/seanox/test/raw/master/releases/seanox-test-1.1.0-src.zip)  
+[Seanox Test 1.2.0](https://github.com/seanox/test/raw/master/releases/seanox-test-1.2.0.zip)  
+[Seanox Test Sources 1.2.0](https://github.com/seanox/test/raw/master/releases/seanox-test-1.2.0-src.zip)  
 
 
 # Installation
 TODO:
 
 # Changes (Change Log)
-## 1.2.0 2020xxxx (summary of the next version)  
+## 1.2.0 20200420 (summary of the current version)  
 CR: Pattern: Update of ACCESS_LOG_STATUS  
 CR: OutputFacadeStream Write: Add a flush  
 CR: OutputFacadeStream Capture: Added various await methods  
 CR: Build: Update to use CHANGES as release notes  
+CR: Project: Update Hamcrest version 2.2  
+CR: Project: Update JUnit version 4.13  
 
 [Read more](https://raw.githubusercontent.com/seanox/test/master/CHANGES)
 
