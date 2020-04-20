@@ -1,23 +1,23 @@
 /**
- *  LIZENZBEDINGUNGEN - Seanox Software Solutions ist ein Open-Source-Projekt,
- *  im Folgenden Seanox Software Solutions oder kurz Seanox genannt.
- *  Diese Software unterliegt der Version 2 der GNU General Public License.
+ * LIZENZBEDINGUNGEN - Seanox Software Solutions ist ein Open-Source-Projekt,
+ * im Folgenden Seanox Software Solutions oder kurz Seanox genannt.
+ * Diese Software unterliegt der Version 2 der GNU General Public License.
  *
- *  Seanox Test SDK
- *  Copyright (C) 2018 Seanox Software Solutionss
+ * Seanox Test SDK
+ * Copyright (C) 2018 Seanox Software Solutionss
  *
- *  This program is free software; you can redistribute it and/or modify it
- *  under the terms of version 2 of the GNU General Public License as published
- *  by the Free Software Foundation.
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of version 2 of the GNU General Public License as published
+ * by the Free Software Foundation.
  *
- *  This program is distributed in the hope that it will be useful, but WITHOUT
- *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- *  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
- *  more details.
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+ * more details.
  *
- *  You should have received a copy of the GNU General Public License along
- *  with this program; if not, write to the Free Software Foundation, Inc.,
- *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 package com.seanox.test.utils;
 
@@ -42,14 +42,14 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 
 /**
- *  Utilities for HTTP(S) connections.<br>
- *  <br>
- *  HttpUtils 1.0.1 20180112<br>
- *  Copyright (C) 2018 Seanox Software Solutions<br>
- *  All rights reserved.
+ * Utilities for HTTP(S) connections.<br>
+ * <br>
+ * HttpUtils 1.0.1 20180112<br>
+ * Copyright (C) 2018 Seanox Software Solutions<br>
+ * All rights reserved.
  *
- *  @author  Seanox Software Solutions
- *  @version 1.0.1 20180112
+ * @author  Seanox Software Solutions
+ * @version 1.0.1 20180112
  */
 public class HttpUtils {
     
@@ -100,11 +100,11 @@ public class HttpUtils {
     }
 
     /**
-     *  Returns the value of a header field.
-     *  If the field does not exist, these methods return {@code null}.
-     *  @param  response response
-     *  @param  field    field
-     *  @return the value of a header field, otherwise {@code null}
+     * Returns the value of a header field.
+     * If the field does not exist, these methods return {@code null}.
+     * @param  response response
+     * @param  field    field
+     * @return the value of a header field, otherwise {@code null}
      */
     public static String getResponseHeaderValue(String response, String field) {
         
@@ -115,10 +115,10 @@ public class HttpUtils {
     }
     
     /**
-     *  Checks exists one or a set of response header fields.
-     *  @param  response response
-     *  @param  fields   fields
-     *  @return {@code true} if all passed fields exists
+     * Checks exists one or a set of response header fields.
+     * @param  response response
+     * @param  fields   fields
+     * @return {@code true} if all passed fields exists
      */
     public static boolean exitsResponseHeader(String response, String... fields) {
         
@@ -136,27 +136,27 @@ public class HttpUtils {
     public interface Keystore {
         
         /**
-         *  Returns the keystore file.
-         *  @return the keystore file
+         * Returns the keystore file.
+         * @return the keystore file
          */
         File getFile();
 
         /**
-         *  Returns the keystore password.
-         *  @return the keystore password
+         * Returns the keystore password.
+         * @return the keystore password
          */
         String getPassword();
     }
     
     /**
-     *  Creates a socket for an HTTP(S) connection.
-     *  The decision whether HTTP or HTTPS is made by specifying a keystore.
-     *  HTTPS requires a keystore.
-     *  @param  address  address
-     *  @param  keystore keystore
-     *  @return the create socket
-     *  @throws IOException
-     *  @throws GeneralSecurityException 
+     * Creates a socket for an HTTP(S) connection.
+     * The decision whether HTTP or HTTPS is made by specifying a keystore.
+     * HTTPS requires a keystore.
+     * @param  address  address
+     * @param  keystore keystore
+     * @return the create socket
+     * @throws IOException
+     * @throws GeneralSecurityException 
      */
     private static Socket createSocket(String address, Keystore keystore, int timeout)
             throws IOException, GeneralSecurityException {
@@ -193,11 +193,11 @@ public class HttpUtils {
     }
 
     /**
-     *  Sends a HTTP request to a server.
-     *  @param  address address
-     *  @return the received response
-     *  @throws IOException
-     *  @throws GeneralSecurityException
+     * Sends a HTTP request to a server.
+     * @param  address address
+     * @return the received response
+     * @throws IOException
+     * @throws GeneralSecurityException
      */    
     public static byte[] sendRequest(String address)
             throws IOException, GeneralSecurityException {
@@ -205,12 +205,12 @@ public class HttpUtils {
     }
 
     /**
-     *  Sends a HTTP request to a server.
-     *  @param  address address
-     *  @param  timeout timeout
-     *  @return the received response
-     *  @throws IOException
-     *  @throws GeneralSecurityException
+     * Sends a HTTP request to a server.
+     * @param  address address
+     * @param  timeout timeout
+     * @return the received response
+     * @throws IOException
+     * @throws GeneralSecurityException
      */    
     public static byte[] sendRequest(String address, int timeout)
             throws IOException, GeneralSecurityException {
@@ -218,12 +218,12 @@ public class HttpUtils {
     }
 
     /**
-     *  Sends a HTTP request to a server.
-     *  @param  address  address
-     *  @param  keystore keystore
-     *  @return the received response
-     *  @throws IOException
-     *  @throws GeneralSecurityException
+     * Sends a HTTP request to a server.
+     * @param  address  address
+     * @param  keystore keystore
+     * @return the received response
+     * @throws IOException
+     * @throws GeneralSecurityException
      */
     public static byte[] sendRequest(String address, Keystore keystore)
             throws IOException, GeneralSecurityException {
@@ -231,13 +231,13 @@ public class HttpUtils {
     }
 
     /**
-     *  Sends a HTTP request to a server.
-     *  @param  address  address
-     *  @param  keystore keystore
-     *  @param  timeout  timeout
-     *  @return the received response
-     *  @throws IOException
-     *  @throws GeneralSecurityException
+     * Sends a HTTP request to a server.
+     * @param  address  address
+     * @param  keystore keystore
+     * @param  timeout  timeout
+     * @return the received response
+     * @throws IOException
+     * @throws GeneralSecurityException
      */
     public static byte[] sendRequest(String address, Keystore keystore, int timeout)
             throws IOException, GeneralSecurityException {
@@ -245,12 +245,12 @@ public class HttpUtils {
     }
 
     /**
-     *  Sends a HTTP request to a server.
-     *  @param  address address
-     *  @param  request request
-     *  @return the received response
-     *  @throws IOException
-     *  @throws GeneralSecurityException
+     * Sends a HTTP request to a server.
+     * @param  address address
+     * @param  request request
+     * @return the received response
+     * @throws IOException
+     * @throws GeneralSecurityException
      */
     public static byte[] sendRequest(String address, String request)
             throws IOException, GeneralSecurityException {
@@ -258,13 +258,13 @@ public class HttpUtils {
     }
     
     /**
-     *  Sends a HTTP request to a server.
-     *  @param  address address
-     *  @param  request request
-     *  @param  timeout timeout
-     *  @return the received response
-     *  @throws IOException
-     *  @throws GeneralSecurityException
+     * Sends a HTTP request to a server.
+     * @param  address address
+     * @param  request request
+     * @param  timeout timeout
+     * @return the received response
+     * @throws IOException
+     * @throws GeneralSecurityException
      */
     public static byte[] sendRequest(String address, String request, int timeout)
             throws IOException, GeneralSecurityException {
@@ -272,13 +272,13 @@ public class HttpUtils {
     }    
     
     /**
-     *  Sends a HTTP request to a server.
-     *  @param  address address
-     *  @param  request request
-     *  @param  data    data
-     *  @return the received response
-     *  @throws IOException
-     *  @throws GeneralSecurityException
+     * Sends a HTTP request to a server.
+     * @param  address address
+     * @param  request request
+     * @param  data    data
+     * @return the received response
+     * @throws IOException
+     * @throws GeneralSecurityException
      */
     public static byte[] sendRequest(String address, String request, InputStream data)
             throws IOException, GeneralSecurityException {
@@ -286,14 +286,14 @@ public class HttpUtils {
     }  
     
     /**
-     *  Sends a HTTP request to a server.
-     *  @param  address address
-     *  @param  request request
-     *  @param  data    data
-     *  @param  timeout timeout
-     *  @return the received response
-     *  @throws IOException
-     *  @throws GeneralSecurityException
+     * Sends a HTTP request to a server.
+     * @param  address address
+     * @param  request request
+     * @param  data    data
+     * @param  timeout timeout
+     * @return the received response
+     * @throws IOException
+     * @throws GeneralSecurityException
      */
     public static byte[] sendRequest(String address, String request, InputStream data, int timeout)
             throws IOException, GeneralSecurityException {
@@ -301,13 +301,13 @@ public class HttpUtils {
     }     
 
     /**
-     *  Sends a HTTP request to a server.
-     *  @param  address  address
-     *  @param  request  request
-     *  @param  keystore keystore
-     *  @return the received response
-     *  @throws IOException
-     *  @throws GeneralSecurityException
+     * Sends a HTTP request to a server.
+     * @param  address  address
+     * @param  request  request
+     * @param  keystore keystore
+     * @return the received response
+     * @throws IOException
+     * @throws GeneralSecurityException
      */
     public static byte[] sendRequest(String address, String request, Keystore keystore)
             throws IOException, GeneralSecurityException {
@@ -315,14 +315,14 @@ public class HttpUtils {
     }
     
     /**
-     *  Sends a HTTP request to a server.
-     *  @param  address  address
-     *  @param  request  request
-     *  @param  keystore keystore
-     *  @param  timeout  timeout
-     *  @return the received response
-     *  @throws IOException
-     *  @throws GeneralSecurityException
+     * Sends a HTTP request to a server.
+     * @param  address  address
+     * @param  request  request
+     * @param  keystore keystore
+     * @param  timeout  timeout
+     * @return the received response
+     * @throws IOException
+     * @throws GeneralSecurityException
      */
     public static byte[] sendRequest(String address, String request, Keystore keystore, int timeout)
             throws IOException, GeneralSecurityException {
@@ -330,14 +330,14 @@ public class HttpUtils {
     }    
     
     /**
-     *  Sends a HTTP request to a server.
-     *  @param  address  address
-     *  @param  request  request
-     *  @param  data     data
-     *  @param  keystore keystore
-     *  @return the received response
-     *  @throws IOException
-     *  @throws GeneralSecurityException
+     * Sends a HTTP request to a server.
+     * @param  address  address
+     * @param  request  request
+     * @param  data     data
+     * @param  keystore keystore
+     * @return the received response
+     * @throws IOException
+     * @throws GeneralSecurityException
      */
     public static byte[] sendRequest(String address, String request, InputStream data, Keystore keystore)
             throws IOException, GeneralSecurityException {
@@ -345,15 +345,15 @@ public class HttpUtils {
     }
     
     /**
-     *  Sends a HTTP request to a server.
-     *  @param  address  address
-     *  @param  request  request
-     *  @param  data     data
-     *  @param  keystore keystore  
-     *  @param  timeout  timeout
-     *  @return the received response
-     *  @throws IOException
-     *  @throws GeneralSecurityException
+     * Sends a HTTP request to a server.
+     * @param  address  address
+     * @param  request  request
+     * @param  data     data
+     * @param  keystore keystore  
+     * @param  timeout  timeout
+     * @return the received response
+     * @throws IOException
+     * @throws GeneralSecurityException
      */
     public static byte[] sendRequest(String address, String request, InputStream data, Keystore keystore, int timeout)
             throws IOException, GeneralSecurityException {
@@ -377,36 +377,36 @@ public class HttpUtils {
     public interface RequestEvent {
         
         /**
-         *  The methods are called when the server sends a response.
-         *  @param respone respone
+         * The methods are called when the server sends a response.
+         * @param respone respone
          */
         void onResponse(byte[] respone);
 
         /**
-         *  The methods are called when an error occurs during the connection.
-         *  @param exception exception
+         * The methods are called when an error occurs during the connection.
+         * @param exception exception
          */
         void onException(Exception exception);
     }
     
     /**
-     *  Sends a HTTP request to a server.
-     *  The received response is handelt as {@link RequestEvent}.
-     *  @param address address
-     *  @param request request
-     *  @param event   event
+     * Sends a HTTP request to a server.
+     * The received response is handelt as {@link RequestEvent}.
+     * @param address address
+     * @param request request
+     * @param event   event
      */
     public static void sendRequest(String address, String request, HttpUtils.RequestEvent event) {
         HttpUtils.sendRequest(address, request, event, null);
     }
 
     /**
-     *  Sends a HTTP request to a server.
-     *  The received response is handelt as {@link RequestEvent}.
-     *  @param address  address
-     *  @param request  request
-     *  @param event    event
-     *  @param keystore keystore
+     * Sends a HTTP request to a server.
+     * The received response is handelt as {@link RequestEvent}.
+     * @param address  address
+     * @param request  request
+     * @param event    event
+     * @param keystore keystore
      */
     public static void sendRequest(String address, String request, HttpUtils.RequestEvent event, Keystore keystore) {
         
@@ -442,9 +442,9 @@ public class HttpUtils {
         public static class Basic extends Authentication {
             
             /** 
-             *  Constructor, creates a new Basic Authentication.
-             *  @param user     user
-             *  @param password password
+             * Constructor, creates a new Basic Authentication.
+             * @param user     user
+             * @param password password
              */
             public Basic(String user, String password) {
                 super(user, password);
@@ -455,9 +455,9 @@ public class HttpUtils {
         public static class Digest extends Authentication {
             
             /** 
-             *  Constructor, creates a new Digest Authentication.
-             *  @param user     user
-             *  @param password password
+             * Constructor, creates a new Digest Authentication.
+             * @param user     user
+             * @param password password
              */
             public Digest(String user, String password) {
                 super(user, password);
@@ -466,13 +466,13 @@ public class HttpUtils {
     }
     
     /**
-     *  Sends a HTTP request to a server.
-     *  @param  address        address
-     *  @param  request        request
-     *  @param  authentication authentication
-     *  @return the received response
-     *  @throws IOException
-     *  @throws GeneralSecurityException
+     * Sends a HTTP request to a server.
+     * @param  address        address
+     * @param  request        request
+     * @param  authentication authentication
+     * @return the received response
+     * @throws IOException
+     * @throws GeneralSecurityException
      */
     public static byte[] sendRequest(String address, String request, Authentication authentication)
             throws IOException, GeneralSecurityException {
@@ -507,15 +507,15 @@ public class HttpUtils {
         }
         
         /**
-         *  Erstellt einen Authorization-Eintrag fuer den HTTP-Header zur
-         *  Autorisierung per Digest.
-         *  @param  header   HTTP-Header
-         *  @param  method   HTTP-Methoden
-         *  @param  uri      URI
-         *  @param  user     Benutzer
-         *  @param  password Passwort
-         *  @return der erstellte Authorization-Eintrag fuer den HTTP-Header
-         *  @throws NoSuchAlgorithmException 
+         * Erstellt einen Authorization-Eintrag fuer den HTTP-Header zur
+         * Autorisierung per Digest.
+         * @param  header   HTTP-Header
+         * @param  method   HTTP-Methoden
+         * @param  uri      URI
+         * @param  user     Benutzer
+         * @param  password Passwort
+         * @return der erstellte Authorization-Eintrag fuer den HTTP-Header
+         * @throws NoSuchAlgorithmException 
          */
         private static String create(String header, String method, String uri, String user, String password)
                 throws NoSuchAlgorithmException {
@@ -551,14 +551,14 @@ public class HttpUtils {
     }
     
     /**
-     *  Sends a HTTP request to a server.
-     *  @param  address        address
-     *  @param  request        request
-     *  @param  authentication authentication
-     *  @param  keystore       keystore
-     *  @return the received response
-     *  @throws IOException
-     *  @throws GeneralSecurityException
+     * Sends a HTTP request to a server.
+     * @param  address        address
+     * @param  request        request
+     * @param  authentication authentication
+     * @param  keystore       keystore
+     * @return the received response
+     * @throws IOException
+     * @throws GeneralSecurityException
      */
     public static byte[] sendRequest(String address, String request, Authentication authentication, Keystore keystore)
             throws IOException, GeneralSecurityException {

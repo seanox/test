@@ -1,23 +1,23 @@
 /**
- *  LIZENZBEDINGUNGEN - Seanox Software Solutions ist ein Open-Source-Projekt,
- *  im Folgenden Seanox Software Solutions oder kurz Seanox genannt.
- *  Diese Software unterliegt der Version 2 der GNU General Public License.
+ * LIZENZBEDINGUNGEN - Seanox Software Solutions ist ein Open-Source-Projekt,
+ * im Folgenden Seanox Software Solutions oder kurz Seanox genannt.
+ * Diese Software unterliegt der Version 2 der GNU General Public License.
  *
- *  Seanox Test SDK
- *  Copyright (C) 2018 Seanox Software Solutions
+ * Seanox Test SDK
+ * Copyright (C) 2018 Seanox Software Solutions
  *
- *  This program is free software; you can redistribute it and/or modify it
- *  under the terms of version 2 of the GNU General Public License as published
- *  by the Free Software Foundation.
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of version 2 of the GNU General Public License as published
+ * by the Free Software Foundation.
  *
- *  This program is distributed in the hope that it will be useful, but WITHOUT
- *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- *  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
- *  more details.
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+ * more details.
  *
- *  You should have received a copy of the GNU General Public License along
- *  with this program; if not, write to the Free Software Foundation, Inc.,
- *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 package com.seanox.test.utils;
 
@@ -33,14 +33,14 @@ import java.util.Objects;
 import javax.naming.directory.NoSuchAttributeException;
 
 /**
- *  Utilities for easy access to annotations.<br>
- *  <br>
- *  Annotations 2.0 20180106<br>
- *  Copyright (C) 2018 Seanox Software Solutions.<br>
- *  All rights reserved.
+ * Utilities for easy access to annotations.<br>
+ * <br>
+ * Annotations 2.0 20180106<br>
+ * Copyright (C) 2018 Seanox Software Solutions.<br>
+ * All rights reserved.
  *
- *  @author  Seanox Software Solutions
- *  @version 2.0 20180106
+ * @author  Seanox Software Solutions
+ * @version 2.0 20180106
  */
 public class Annotations {
     
@@ -50,36 +50,36 @@ public class Annotations {
     }
 
     /**
-     *  Determines all fields of a class as array that are annotated with the
-     *  specified annotation. If this cannot be determined, the array is empty.
-     *  @param  source class to be analyzed
-     *  @param  type   desired annotation
-     *  @return the determined fields as array 
+     * Determines all fields of a class as array that are annotated with the
+     * specified annotation. If this cannot be determined, the array is empty.
+     * @param  source class to be analyzed
+     * @param  type   desired annotation
+     * @return the determined fields as array 
      */
     public static Field[] getFields(Class<?> source, Class<? extends Annotation> type) {
         return Annotations.getFields(source, type, null, -1);
     }
     
     /**
-     *  Determines all fields of a class as array that are annotated with the
-     *  specified annotation. If this cannot be determined, the array is empty.
-     *  @param  source class to be analyzed
-     *  @param  type   desired annotation
-     *  @param  filter field types to be searched (class, modifier)
-     *  @return the determined fields as array 
+     * Determines all fields of a class as array that are annotated with the
+     * specified annotation. If this cannot be determined, the array is empty.
+     * @param  source class to be analyzed
+     * @param  type   desired annotation
+     * @param  filter field types to be searched (class, modifier)
+     * @return the determined fields as array 
      */    
     public static Field[] getFields(Class<?> source, Class<? extends Annotation> type, Class<?>[] filter) {
         return Annotations.getFields(source, type, filter, -1);
     }
 
     /**
-     *  Determines all fields of a class as array that are annotated with the
-     *  specified annotation. If this cannot be determined, the array is empty.
-     *  @param  source    class to be analyzed
-     *  @param  type      desired annotation
-     *  @param  filter    field types to be searched (class, modifier)
-     *  @param  modifiers modifiers to be searched (or combination)
-     *  @return the determined fields as array 
+     * Determines all fields of a class as array that are annotated with the
+     * specified annotation. If this cannot be determined, the array is empty.
+     * @param  source    class to be analyzed
+     * @param  type      desired annotation
+     * @param  filter    field types to be searched (class, modifier)
+     * @param  modifiers modifiers to be searched (or combination)
+     * @return the determined fields as array 
      */       
     public static Field[] getFields(Class<?> source, Class<? extends Annotation> type, Class<?>[] filter, int modifiers) {
 
@@ -115,36 +115,36 @@ public class Annotations {
     }
     
     /**
-     *  Determines all methods of a class as array that are annotated with the
-     *  specified annotation. If this cannot be determined, the array is empty.
-     *  @param  source class to be analyzed
-     *  @param  type   desired annotation
-     *  @return the determined methods as array 
+     * Determines all methods of a class as array that are annotated with the
+     * specified annotation. If this cannot be determined, the array is empty.
+     * @param  source class to be analyzed
+     * @param  type   desired annotation
+     * @return the determined methods as array 
      */  
     public static Method[] getMethods(Class<?> source, Class<? extends Annotation> type) {
         return Annotations.getMethods(source, type, null, -1);
     }
 
     /**
-     *  Determines all methods of a class as array that are annotated with the
-     *  specified annotation. If this cannot be determined, the array is empty.
-     *  @param  source class to be analyzed
-     *  @param  type   desired annotation
-     *  @param  filter field types to be searched (class, modifier)
-     *  @return the determined methods as array 
+     * Determines all methods of a class as array that are annotated with the
+     * specified annotation. If this cannot be determined, the array is empty.
+     * @param  source class to be analyzed
+     * @param  type   desired annotation
+     * @param  filter field types to be searched (class, modifier)
+     * @return the determined methods as array 
      */
     public static Method[] getMethods(Class<?> source, Class<? extends Annotation> type, Class<?>[] filter) {
         return Annotations.getMethods(source, type, filter, -1);
     }
 
     /**
-     *  Determines all methods of a class as array that are annotated with the
-     *  specified annotation. If this cannot be determined, the array is empty.
-     *  @param  source    class to be analyzed
-     *  @param  type      desired annotation
-     *  @param  filter    field types to be searched (class, modifier)
-     *  @param  modifiers modifiers to be searched (or combination)
-     *  @return the determined methods as array 
+     * Determines all methods of a class as array that are annotated with the
+     * specified annotation. If this cannot be determined, the array is empty.
+     * @param  source    class to be analyzed
+     * @param  type      desired annotation
+     * @param  filter    field types to be searched (class, modifier)
+     * @param  modifiers modifiers to be searched (or combination)
+     * @return the determined methods as array 
      */
     public static Method[] getMethods(Class<?> source, Class<? extends Annotation> type, Class<?>[] filter, int modifiers) {
 
@@ -180,10 +180,10 @@ public class Annotations {
     }
 
     /**
-     *  Determines the specified annotation for a class.
-     *  @param  source class to be analyzed
-     *  @param  type   desired annotation
-     *  @return the determined annotation or {@code null} if this cannot be found
+     * Determines the specified annotation for a class.
+     * @param  source class to be analyzed
+     * @param  type   desired annotation
+     * @return the determined annotation or {@code null} if this cannot be found
      */
     public static Annotation getAnnotation(Class<?> source, Class<? extends Annotation> type) {
         
@@ -203,10 +203,10 @@ public class Annotations {
     }
 
     /**
-     *  Determines the specified annotation for a field.
-     *  @param  field field to be analyzed
-     *  @param  type  desired annotation
-     *  @return the determined annotation or {@code null} if this cannot be found
+     * Determines the specified annotation for a field.
+     * @param  field field to be analyzed
+     * @param  type  desired annotation
+     * @return the determined annotation or {@code null} if this cannot be found
      */    
     public static Annotation getAnnotation(Field field, Class<? extends Annotation> type) {
         
@@ -217,10 +217,10 @@ public class Annotations {
     }    
 
     /**
-     *  Determines the specified annotation for a method.
-     *  @param  method method to be analyzed
-     *  @param  type   desired annotation
-     *  @return the determined annotation or {@code null} if this cannot be found
+     * Determines the specified annotation for a method.
+     * @param  method method to be analyzed
+     * @param  type   desired annotation
+     * @return the determined annotation or {@code null} if this cannot be found
      */        
     public static Annotation getAnnotation(Method method, Class<? extends Annotation> type) {
         
@@ -231,11 +231,11 @@ public class Annotations {
     }    
   
     /**
-     *  Determines the specified annotation for a parameter of a method.
-     *  @param  method    method to be analyzed
-     *  @param  parameter desired parameter
-     *  @param  type      desired annotation
-     *  @return the determined annotation or {@code null} if this cannot be found
+     * Determines the specified annotation for a parameter of a method.
+     * @param  method    method to be analyzed
+     * @param  parameter desired parameter
+     * @param  type      desired annotation
+     * @return the determined annotation or {@code null} if this cannot be found
      */     
     public static Annotation getAnnotation(Method method, String parameter, Class<? extends Annotation> type) {
 
@@ -258,13 +258,13 @@ public class Annotations {
     }    
     
     /**
-     *  Determines the data type of an attribute of an annotation or throws
-     *  {@link NoSuchAttributeException} if the attribute does not exist.
-     *  @param  annotation Annotation
-     *  @param  attribute  name of attribute
-     *  @return the determined data type
-     *  @throws NoSuchAttributeException 
-     *      If this attribute cannot be determined.
+     * Determines the data type of an attribute of an annotation or throws
+     * {@link NoSuchAttributeException} if the attribute does not exist.
+     * @param  annotation Annotation
+     * @param  attribute  name of attribute
+     * @return the determined data type
+     * @throws NoSuchAttributeException 
+     *     If this attribute cannot be determined.
      */
     public static Class<?> getAttributeType(Annotation annotation, String attribute)
             throws NoSuchAttributeException {
@@ -284,13 +284,13 @@ public class Annotations {
     }   
     
     /**
-     *  Determines the default value of an attribute of an annotation or throws
-     *  {@link NoSuchAttributeException} if the attribute does not exist.
-     *  @param  annotation Annotation
-     *  @param  attribute  name of attribute
-     *  @return the determined data type
-     *  @throws NoSuchAttributeException 
-     *      If this attribute cannot be determined.
+     * Determines the default value of an attribute of an annotation or throws
+     * {@link NoSuchAttributeException} if the attribute does not exist.
+     * @param  annotation Annotation
+     * @param  attribute  name of attribute
+     * @return the determined data type
+     * @throws NoSuchAttributeException 
+     *     If this attribute cannot be determined.
      */
     public static Object getAttributeDefault(Annotation annotation, String attribute)
             throws NoSuchAttributeException {
@@ -310,17 +310,17 @@ public class Annotations {
     }     
     
     /**
-     *  Determines the value of an attribute of an annotation or throws
-     *  {@link NoSuchAttributeException} if the attribute does not exist.
-     *  @param  annotation Annotation
-     *  @param  attribute  name of attribute
-     *  @return the determined data type
-     *  @throws NoSuchAttributeException 
-     *      If this attribute cannot be determined.
-     *  @throws IllegalAccessException
-     *      If access to the field fails.
-     *  @throws InvocationTargetException
-     *      If access to the field fails.
+     * Determines the value of an attribute of an annotation or throws
+     * {@link NoSuchAttributeException} if the attribute does not exist.
+     * @param  annotation Annotation
+     * @param  attribute  name of attribute
+     * @return the determined data type
+     * @throws NoSuchAttributeException 
+     *     If this attribute cannot be determined.
+     * @throws IllegalAccessException
+     *     If access to the field fails.
+     * @throws InvocationTargetException
+     *     If access to the field fails.
      */
     public static Object getAttributeValue(Annotation annotation, String attribute)
             throws IllegalAccessException, InvocationTargetException, NoSuchAttributeException {

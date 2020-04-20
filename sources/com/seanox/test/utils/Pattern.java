@@ -1,35 +1,35 @@
 /**
- *  LIZENZBEDINGUNGEN - Seanox Software Solutions ist ein Open-Source-Projekt,
- *  im Folgenden Seanox Software Solutions oder kurz Seanox genannt.
- *  Diese Software unterliegt der Version 2 der GNU General Public License.
+ * LIZENZBEDINGUNGEN - Seanox Software Solutions ist ein Open-Source-Projekt,
+ * im Folgenden Seanox Software Solutions oder kurz Seanox genannt.
+ * Diese Software unterliegt der Version 2 der GNU General Public License.
  *
- *  Seanox Test SDK
- *  Copyright (C) 2020 Seanox Software Solutions
+ * Seanox Test SDK
+ * Copyright (C) 2020 Seanox Software Solutions
  *
- *  This program is free software; you can redistribute it and/or modify it
- *  under the terms of version 2 of the GNU General Public License as published
- *  by the Free Software Foundation.
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of version 2 of the GNU General Public License as published
+ * by the Free Software Foundation.
  *
- *  This program is distributed in the hope that it will be useful, but WITHOUT
- *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- *  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
- *  more details.
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+ * more details.
  *
- *  You should have received a copy of the GNU General Public License along
- *  with this program; if not, write to the Free Software Foundation, Inc.,
- *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 package com.seanox.test.utils;
 
 /**
- *  Pattern for regular expressions.<br>
- *  <br>
- *  Pattern 1.0.1 20200411<br>
- *  Copyright (C) 2020 Seanox Software Solutions<br>
- *  All rights reserved.
+ * Pattern for regular expressions.<br>
+ * <br>
+ * Pattern 1.0.1 20200411<br>
+ * Copyright (C) 2020 Seanox Software Solutions<br>
+ * All rights reserved.
  *
- *  @author  Seanox Software Solutions
- *  @version 1.0.1 20200411
+ * @author  Seanox Software Solutions
+ * @version 1.0.1 20200411
  */
 public class Pattern {
     
@@ -40,12 +40,12 @@ public class Pattern {
     public static final String LINE_SPACE = "[^\\S\\r\\n]";
     
     /** 
-     *  Pattern for netweork connection.<br>
-     *  Format: {@code host:port}<br>
-     *    <dir>Grouping:</dir>
-     *  0: match<br>
-     *  1: host<br>
-     *  2: port
+     * Pattern for netweork connection.<br>
+     * Format: {@code host:port}<br>
+     *   <dir>Grouping:</dir>
+     * 0: match<br>
+     * 1: host<br>
+     * 2: port
      */
     public static final String NETWORK_CONNECTION = "^(?i:([a-z_\\-\\d\\.:]+):(\\d{1,5}))$";
     
@@ -53,8 +53,8 @@ public class Pattern {
     public static final String NETWORK_DOMAIN = "^[A-Za-z0-9]+(?:[A-Za-z0-9\\-_\\.]*[A-Za-z0-9]+)*$";
     
     /** 
-     *  Pattern for netweork connection: domain.
-     *  Can be embedded in another expression.
+     * Pattern for netweork connection: domain.
+     * Can be embedded in another expression.
      */
     public static final String NETWORK_DOMAIN_FRAGMENT = "(?:" + NETWORK_DOMAIN.substring(1, NETWORK_DOMAIN.length() -2) + ")";
 
@@ -104,9 +104,9 @@ public class Pattern {
     public static final String ACCESS_LOG_STATUS_504 = ACCESS_LOG_STATUS("504");
     
     /** 
-     *  Pattern for a custom access log entry
-     *  @param  code code
-     *  @return custom pattern
+     * Pattern for a custom access log entry
+     * @param  code code
+     * @return custom pattern
      */
     public static String ACCESS_LOG_STATUS(String code) {
         
@@ -115,21 +115,21 @@ public class Pattern {
     }
     
     /** 
-     *  Pattern for a custom access log entry
-     *  @param  code    code
-     *  @param  request request
-     *  @return custom pattern
+     * Pattern for a custom access log entry
+     * @param  code    code
+     * @param  request request
+     * @return custom pattern
      */
     public static String ACCESS_LOG_STATUS(String code, String request) {
         return Pattern.ACCESS_LOG_STATUS(code, request, null);
     }
     
     /** 
-     *  Pattern for a custom access log entry
-     *  @param  code    code
-     *  @param  request request
-     *  @param  length  length
-     *  @return custom pattern
+     * Pattern for a custom access log entry
+     * @param  code    code
+     * @param  request request
+     * @param  length  length
+     * @return custom pattern
      */
     public static String ACCESS_LOG_STATUS(String code, String request, int length) {
         
@@ -143,11 +143,11 @@ public class Pattern {
     }
     
     /** 
-     *  Pattern for a custom access log entry
-     *  @param  code    code
-     *  @param  request request
-     *  @param  user    user
-     *  @return custom pattern
+     * Pattern for a custom access log entry
+     * @param  code    code
+     * @param  request request
+     * @param  user    user
+     * @return custom pattern
      */
     public static String ACCESS_LOG_STATUS(String code, String request, String user) {
         
@@ -162,11 +162,11 @@ public class Pattern {
     }
     
     /** 
-     *  Pattern for a HTTP response.
-     *    <dir>Grouping:</dir>
-     *  0: match<br>
-     *  1: header<br>
-     *  2: body
+     * Pattern for a HTTP response.
+     *   <dir>Grouping:</dir>
+     * 0: match<br>
+     * 1: header<br>
+     * 2: body
      */
     public static final String HTTP_RESPONSE = "(?s)^(.*?)(?:(?:\r\n){2})(.*)$";
     
@@ -177,9 +177,9 @@ public class Pattern {
     public static final String HTTP_RESPONSE_ALLOW_DIFFUSE = "(?si)^.*\\sAllow:.*$";
     
     /** 
-     *  Pattern for a custom http response Allow header 
-     *  @param  methods methods
-     *  @return pattern for the custom http response Allow header
+     * Pattern for a custom http response Allow header 
+     * @param  methods methods
+     * @return pattern for the custom http response Allow header
      */
     public static final String HTTP_RESPONSE_ALLOW(String... methods) {
         
@@ -206,9 +206,9 @@ public class Pattern {
     public static final String HTTP_RESPONSE_CONTENT_LENGTH_DIFFUSE = "(?si)^.*\\sContent-Length:.*$";
     
     /** 
-     *  Pattern for a custom http response Content-Lenght header 
-     *  @param  length length
-     *  @return pattern for the custom http response Content-Length header
+     * Pattern for a custom http response Content-Lenght header 
+     * @param  length length
+     * @return pattern for the custom http response Content-Length header
      */
     public static String HTTP_RESPONSE_CONTENT_LENGTH(long length) {
         return "(?si)^.*\r\nContent-Length: " + length + "(\r\n.*)*$";
@@ -218,11 +218,11 @@ public class Pattern {
     public static final String HTTP_RESPONSE_CONTENT_RANGE_DIFFUSE = "(?si)^.*\\sContent-Range:.*$";
     
     /** 
-     *  Pattern for a custom http response Range header 
-     *  @param  start start
-     *  @param  end   end
-     *  @param  size  size
-     *  @return pattern for the custom http response Range header
+     * Pattern for a custom http response Range header 
+     * @param  start start
+     * @param  end   end
+     * @param  size  size
+     * @return pattern for the custom http response Range header
      */
     public static String HTTP_RESPONSE_CONTENT_RANGE(long start, long end , long size) {
         return "(?si)^.*\r\nContent-Range: bytes " + start + "-" + end + "/" + size + "(\r\n.*)*$";
@@ -259,9 +259,9 @@ public class Pattern {
     public static final String HTTP_RESPONSE_LOCATION_DIFFUSE = "(?si)^.*\\sLocation:.*$";
     
     /** 
-     *  Pattern for a custom http response Location header 
-     *  @param  url url
-     *  @return pattern for the custom http response Location header
+     * Pattern for a custom http response Location header 
+     * @param  url url
+     * @return pattern for the custom http response Location header
      */
     public static final String HTTP_RESPONSE_LOCATION(String url) {
         
@@ -334,9 +334,9 @@ public class Pattern {
     public static final String HTTP_RESPONSE_STATUS_504 = HTTP_RESPONSE_STATUS("504");
     
     /** 
-     *  Pattern for a custom http response header
-     *  @param  code code
-     *  @return pattern for the custom http response header
+     * Pattern for a custom http response header
+     * @param  code code
+     * @return pattern for the custom http response header
      */
     public static final String HTTP_RESPONSE_STATUS(String code) {
 
@@ -352,9 +352,9 @@ public class Pattern {
     public static final String HTTP_RESPONSE_WWW_AUTHENTICATE_DIFFUSE = "(?si)^.*\\sWWW-Authenticate:.*$";
 
     /** 
-     *  Pattern for a custom http response WWW-Authenticate header 
-     *  @param  method method
-     *  @return pattern for the custom http response WWW-Authenticate header
+     * Pattern for a custom http response WWW-Authenticate header 
+     * @param  method method
+     * @return pattern for the custom http response WWW-Authenticate header
      */
     public static String HTTP_RESPONSE_WWW_AUTHENTICATE(String method) {
         return "(?si)^.*\r\nWWW-Authenticate: \\Q" + method + "\\E\\s.*$";
@@ -364,9 +364,9 @@ public class Pattern {
     public static final String HTTP_RESPONSE_WWW_AUTHENTICATE_BASIC = HTTP_RESPONSE_WWW_AUTHENTICATE("Basic");
 
     /** 
-     *  Pattern for a custom http response WWW-Authenticate Basic header 
-     *  @param  realm realm
-     *  @return pattern for the custom http response WWW-Authenticate Basic header
+     * Pattern for a custom http response WWW-Authenticate Basic header 
+     * @param  realm realm
+     * @return pattern for the custom http response WWW-Authenticate Basic header
      */    
     public static final String HTTP_RESPONSE_WWW_AUTHENTICATE_BASIC(String realm) {
         return "(?si)^.*\r\nWWW-Authenticate: Basic realm=\"\\Q" + realm + "\\E\"\r\n.*$";
@@ -376,9 +376,9 @@ public class Pattern {
     public static final String HTTP_RESPONSE_WWW_AUTHENTICATE_DIGEST = HTTP_RESPONSE_WWW_AUTHENTICATE("Digest");
 
     /** 
-     *  Pattern for a custom http response WWW-Authenticate Digest header 
-     *  @param  realm realm
-     *  @return pattern for the custom http response WWW-Authenticate Digest header
+     * Pattern for a custom http response WWW-Authenticate Digest header 
+     * @param  realm realm
+     * @return pattern for the custom http response WWW-Authenticate Digest header
      */    
     public static String HTTP_RESPONSE_WWW_AUTHENTICATE_DIGEST(String realm) {
         return "(?si)^.*\r\nWWW-Authenticate: Digest realm=\"\\Q" + realm + "\\E\",.*$";

@@ -1,23 +1,23 @@
 /**
- *  LIZENZBEDINGUNGEN - Seanox Software Solutions ist ein Open-Source-Projekt,
- *  im Folgenden Seanox Software Solutions oder kurz Seanox genannt.
- *  Diese Software unterliegt der Version 2 der GNU General Public License.
+ * LIZENZBEDINGUNGEN - Seanox Software Solutions ist ein Open-Source-Projekt,
+ * im Folgenden Seanox Software Solutions oder kurz Seanox genannt.
+ * Diese Software unterliegt der Version 2 der GNU General Public License.
  *
- *  Seanox Test SDK
- *  Copyright (C) 2020 Seanox Software Solutions
+ * Seanox Test SDK
+ * Copyright (C) 2020 Seanox Software Solutions
  *
- *  This program is free software; you can redistribute it and/or modify it
- *  under the terms of version 2 of the GNU General Public License as published
- *  by the Free Software Foundation.
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of version 2 of the GNU General Public License as published
+ * by the Free Software Foundation.
  *
- *  This program is distributed in the hope that it will be useful, but WITHOUT
- *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- *  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
- *  more details.
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+ * more details.
  *
- *  You should have received a copy of the GNU General Public License along
- *  with this program; if not, write to the Free Software Foundation, Inc.,
- *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 package com.seanox.test.utils;
 
@@ -28,17 +28,17 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 /**
- *  Multiple output streams are combined into one output stream.
- *  All data written to this output stream are distributed to all registered
- *  output streams. The output streams can be flexibly added and removed at
- *  runtime or created temporarily.<br>
- *  <br>
- *  OutputFacadeStream 1.1.0 20200411<br>
- *  Copyright (C) 2020 Seanox Software Solutions<br>
- *  All rights reserved.
+ * Multiple output streams are combined into one output stream.
+ * All data written to this output stream are distributed to all registered
+ * output streams. The output streams can be flexibly added and removed at
+ * runtime or created temporarily.<br>
+ * <br>
+ * OutputFacadeStream 1.1.0 20200411<br>
+ * Copyright (C) 2020 Seanox Software Solutions<br>
+ * All rights reserved.
  *
- *  @author  Seanox Software Solutions
- *  @version 1.1.0 20200411
+ * @author  Seanox Software Solutions
+ * @version 1.1.0 20200411
  */
 public class OutputFacadeStream extends OutputStream {
     
@@ -51,8 +51,8 @@ public class OutputFacadeStream extends OutputStream {
     }    
     
     /**
-     *  Constructor creates a new OutputMultiStream object.
-     *  @param outputStreams output streams
+     * Constructor creates a new OutputMultiStream object.
+     * @param outputStreams output streams
      */
     public OutputFacadeStream(OutputStream... outputStreams) {
         
@@ -63,8 +63,8 @@ public class OutputFacadeStream extends OutputStream {
     }
     
     /**
-     *  Adds one or more output streams.
-     *  @param outputStreams output streams
+     * Adds one or more output streams.
+     * @param outputStreams output streams
      */
     public void mount(OutputStream... outputStreams) {
 
@@ -76,8 +76,8 @@ public class OutputFacadeStream extends OutputStream {
     }
 
     /**
-     *  Removes one or more output streams.
-     *  @param outputStreams output streams
+     * Removes one or more output streams.
+     * @param outputStreams output streams
      */
     public void unmount(OutputStream... outputStreams) {
 
@@ -89,8 +89,8 @@ public class OutputFacadeStream extends OutputStream {
     }
     
     /**
-     *  Creates a capture stream to get the changes from now.
-     *  @return the created capture stream
+     * Creates a capture stream to get the changes from now.
+     * @return the created capture stream
      */
     public Capture capture() {
         
@@ -153,9 +153,9 @@ public class OutputFacadeStream extends OutputStream {
         }
 
         /**
-         *  Wait until a line break can be detected.
-         *  Without a line break, the method will block.
-         *  @throws InterruptedException
+         * Wait until a line break can be detected.
+         * Without a line break, the method will block.
+         * @throws InterruptedException
          */        
         public void await()
                 throws InterruptedException {
@@ -166,13 +166,13 @@ public class OutputFacadeStream extends OutputStream {
         }
         
         /**
-         *  Wait until a line break can be detected.
-         *  Optionally, a timeout can be specified if the methods should not
-         *  block endlessly.
-         *  @param  timeout
-         *  @throws TimeoutException
-         *      In case when a timeout has been set that has been exceeded.
-         *  @throws InterruptedException
+         * Wait until a line break can be detected.
+         * Optionally, a timeout can be specified if the methods should not
+         * block endlessly.
+         * @param  timeout
+         * @throws TimeoutException
+         *     In case when a timeout has been set that has been exceeded.
+         * @throws InterruptedException
          */
         public void await(long timeout)
                 throws TimeoutException, InterruptedException {
@@ -192,10 +192,10 @@ public class OutputFacadeStream extends OutputStream {
         }
         
         /**
-         *  Wait until the pattern can be detected.
-         *  Without the pattern, the method will block.
-         *  @param  pattern
-         *  @throws InterruptedException
+         * Wait until the pattern can be detected.
+         * Without the pattern, the method will block.
+         * @param  pattern
+         * @throws InterruptedException
          */          
         public void await(String pattern)
                 throws InterruptedException {
@@ -206,14 +206,14 @@ public class OutputFacadeStream extends OutputStream {
         }
 
         /**
-         *  Wait until a pattern can be detected.
-         *  Optionally, a timeout can be specified if the methods should not
-         *  block endlessly.
-         *  @param  pattern
-         *  @param  timeout
-         *  @throws TimeoutException
-         *      In case when a timeout has been set that has been exceeded.
-         *  @throws InterruptedException
+         * Wait until a pattern can be detected.
+         * Optionally, a timeout can be specified if the methods should not
+         * block endlessly.
+         * @param  pattern
+         * @param  timeout
+         * @throws TimeoutException
+         *     In case when a timeout has been set that has been exceeded.
+         * @throws InterruptedException
          */        
         public void await(String pattern, long timeout)
                 throws TimeoutException, InterruptedException {

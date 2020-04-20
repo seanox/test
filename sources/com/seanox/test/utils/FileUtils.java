@@ -1,23 +1,23 @@
 /**
- *  LIZENZBEDINGUNGEN - Seanox Software Solutions ist ein Open-Source-Projekt,
- *  im Folgenden Seanox Software Solutions oder kurz Seanox genannt.
- *  Diese Software unterliegt der Version 2 der GNU General Public License.
+ * LIZENZBEDINGUNGEN - Seanox Software Solutions ist ein Open-Source-Projekt,
+ * im Folgenden Seanox Software Solutions oder kurz Seanox genannt.
+ * Diese Software unterliegt der Version 2 der GNU General Public License.
  *
- *  Seanox Test SDK
- *  Copyright (C) 2017 Seanox Software Solutions
+ * Seanox Test SDK
+ * Copyright (C) 2017 Seanox Software Solutions
  *
- *  This program is free software; you can redistribute it and/or modify it
- *  under the terms of version 2 of the GNU General Public License as published
- *  by the Free Software Foundation.
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of version 2 of the GNU General Public License as published
+ * by the Free Software Foundation.
  *
- *  This program is distributed in the hope that it will be useful, but WITHOUT
- *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- *  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
- *  more details.
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+ * more details.
  *
- *  You should have received a copy of the GNU General Public License along
- *  with this program; if not, write to the Free Software Foundation, Inc.,
- *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 package com.seanox.test.utils;
 
@@ -29,14 +29,14 @@ import java.io.OutputStream;
 import java.util.regex.Pattern;
 
 /**
- *  Utilities for file(system).<br>
- *  <br>
- *  FileUtils 1.0 20171212<br>
- *  Copyright (C) 2017 Seanox Software Solutions<br>
- *  All rights reserved.
+ * Utilities for file(system).<br>
+ * <br>
+ * FileUtils 1.0 20171212<br>
+ * Copyright (C) 2017 Seanox Software Solutions<br>
+ * All rights reserved.
  *
- *  @author  Seanox Software Solutions
- *  @version 1.0 20171212
+ * @author  Seanox Software Solutions
+ * @version 1.0 20171212
  */
 public class FileUtils {
     
@@ -45,12 +45,12 @@ public class FileUtils {
     }      
     
     /**
-     *  Writes all bytes of a file in the passed OutputStream.
-     *  @param  file   file
-     *  @param  output output
-     *  @return the number of transferred bytes
-     *  @throws IOException
-     *      In case of faulty data access.
+     * Writes all bytes of a file in the passed OutputStream.
+     * @param  file   file
+     * @param  output output
+     * @return the number of transferred bytes
+     * @throws IOException
+     *     In case of faulty data access.
      */
     public static long transmit(File file, OutputStream output)
             throws IOException {
@@ -65,9 +65,9 @@ public class FileUtils {
     }
     
     /**
-     *  Normalizes a path.
-     *  @param  path path
-     *  @return the normalized path
+     * Normalizes a path.
+     * @param  path path
+     * @return the normalized path
      */
     public static String normalizePath(String path) {
 
@@ -110,10 +110,10 @@ public class FileUtils {
     }
     
     /**
-     *  FilePatternFilter to filter and accept files by a pattern.
-     *  The filter supports {@code *} and {@code ?}.
-     *  Multiple conditions are separated by commas.<br>
-     *    <dir>e.g. {@code new FilenamePatternFilter(".*html, *.jpg")}</dir>
+     * FilePatternFilter to filter and accept files by a pattern.
+     * The filter supports {@code *} and {@code ?}.
+     * Multiple conditions are separated by commas.<br>
+     *   <dir>e.g. {@code new FilenamePatternFilter(".*html, *.jpg")}</dir>
      */
     public static class FilePatternFilter implements FilenameFilter {
 
@@ -121,8 +121,8 @@ public class FileUtils {
         private Pattern pattern;
         
         /**
-         *  Constructor, creates a new FilePatternFilter object.
-         *  @param pattern pattern
+         * Constructor, creates a new FilePatternFilter object.
+         * @param pattern pattern
          */
         public FilePatternFilter(String pattern) {
             
@@ -141,10 +141,10 @@ public class FileUtils {
         }
 
         /**
-         *  Tests if a specified file should be included in a file list.
-         *  @param  file file this was found
-         *  @return {@code true} if and only if the name should be included in
-         *          the file list; {@code false} otherwise.
+         * Tests if a specified file should be included in a file list.
+         * @param  file file this was found
+         * @return {@code true} if and only if the name should be included in
+         *         the file list; {@code false} otherwise.
          */
         public boolean accept(File file) {
             return this.accept(file.getParentFile(), file.getName());
@@ -161,8 +161,8 @@ public class FileUtils {
     }
     
     /**
-     *  Returns the temp directory as file.
-     *  @return the temp directory as file
+     * Returns the temp directory as file.
+     * @return the temp directory as file
      */
     public static File getTempDir() {
         return new File(System.getProperty("java.io.tmpdir"));

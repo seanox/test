@@ -1,23 +1,23 @@
 /**
- *  LIZENZBEDINGUNGEN - Seanox Software Solutions ist ein Open-Source-Projekt,
- *  im Folgenden Seanox Software Solutions oder kurz Seanox genannt.
- *  Diese Software unterliegt der Version 2 der GNU General Public License.
+ * LIZENZBEDINGUNGEN - Seanox Software Solutions ist ein Open-Source-Projekt,
+ * im Folgenden Seanox Software Solutions oder kurz Seanox genannt.
+ * Diese Software unterliegt der Version 2 der GNU General Public License.
  *
- *  Seanox Test SDK
- *  Copyright (C) 2018 Seanox Software Solutions
+ * Seanox Test SDK
+ * Copyright (C) 2018 Seanox Software Solutions
  *
- *  This program is free software; you can redistribute it and/or modify it
- *  under the terms of version 2 of the GNU General Public License as published
- *  by the Free Software Foundation.
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of version 2 of the GNU General Public License as published
+ * by the Free Software Foundation.
  *
- *  This program is distributed in the hope that it will be useful, but WITHOUT
- *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- *  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
- *  more details.
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+ * more details.
  *
- *  You should have received a copy of the GNU General Public License along
- *  with this program; if not, write to the Free Software Foundation, Inc.,
- *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 package com.seanox.test.utils;
 
@@ -32,34 +32,34 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- *  Utilities for text and strings.
- *  
- *  <h3>Features:</h3>
- *  <ul>
- *    <li>Computation of phonetic values</li>
- *    <li>Escaping and unescaping</li>
- *    <li>Decoration and undecoration of ISO control characters</li>
- *    <li>Natural sorting</li>
- *    <li>Splitting and replacement</li>
- *  </ul>
- *  
- *  <h3>Principles:</h3>
- *  <ul>
- *    <li>
- *      Is passed {@code null} as value, then {@code null} is also returned.
- *    </li>
- *    <li>
- *      Is passed {@code null} as functional parameter, then it is used as not
- *      specified or thrown an exception.
- *    </li>
- *  </ul>
- *  <br>
- *  TextUtils 1.2 20180109<br>
- *  Copyright (C) 2018 Seanox Software Solutions<br>
- *  All rights reserved.
+ * Utilities for text and strings.
+ * 
+ * <h3>Features:</h3>
+ * <ul>
+ *   <li>Computation of phonetic values</li>
+ *   <li>Escaping and unescaping</li>
+ *   <li>Decoration and undecoration of ISO control characters</li>
+ *   <li>Natural sorting</li>
+ *   <li>Splitting and replacement</li>
+ * </ul>
+ * 
+ * <h3>Principles:</h3>
+ * <ul>
+ *   <li>
+ *     Is passed {@code null} as value, then {@code null} is also returned.
+ *   </li>
+ *   <li>
+ *     Is passed {@code null} as functional parameter, then it is used as not
+ *     specified or thrown an exception.
+ *   </li>
+ * </ul>
+ * <br>
+ * TextUtils 1.2 20180109<br>
+ * Copyright (C) 2018 Seanox Software Solutions<br>
+ * All rights reserved.
  *
- *  @author  Seanox Software Solutions
- *  @version 1.2 20180109
+ * @author  Seanox Software Solutions
+ * @version 1.2 20180109
  */
 public class TextUtils {
     
@@ -71,14 +71,14 @@ public class TextUtils {
     }    
     
     /**
-     *  Returns the phonetic value of the string in the specified language.<br>
-     *  Supported languages: DE
-     *  If {@code null} is passed, {@code null} is returned.
-     *  @param  string string to be calculated
-     *  @param  locale language
-     *  @return the determined phonetic value
-     *  @throws IllegalArgumentException
-     *      For an unsupported language / locale.
+     * Returns the phonetic value of the string in the specified language.<br>
+     * Supported languages: DE
+     * If {@code null} is passed, {@code null} is returned.
+     * @param  string string to be calculated
+     * @param  locale language
+     * @return the determined phonetic value
+     * @throws IllegalArgumentException
+     *     For an unsupported language / locale.
      */
     public static String phonetic(String string, Locale locale) {
 
@@ -185,13 +185,13 @@ public class TextUtils {
     }    
     
     /**
-     *  Splits this string around matches of the given regular expression.
-     *  Repeated matches are not combined and creates empty entries in the array.
-     *  If {@code null} is passed, {@code null} is returned.
-     *  @param  string     string
-     *  @param  expression the delimiting regular expression
-     *  @return the array of strings computed by splitting this string around
-     *          matches of the given regular expression
+     * Splits this string around matches of the given regular expression.
+     * Repeated matches are not combined and creates empty entries in the array.
+     * If {@code null} is passed, {@code null} is returned.
+     * @param  string     string
+     * @param  expression the delimiting regular expression
+     * @return the array of strings computed by splitting this string around
+     *         matches of the given regular expression
      */
     public static String[] split(String string, String expression) {
 
@@ -218,13 +218,13 @@ public class TextUtils {
     }
 
     /**
-     *  Decodes all escape sequences ({@code \b \t \n \f \r \" \' \\}), three
-     *  bytes of octal escape sequences ({@code \000-\377}) and four bytes
-     *  hexadecimal ({@code \u0000-\uFFFF}) after a backslash.
-     *  The method works tollerant and keeps incorrect sequences.
-     *  If {@code null} is passed, {@code null} is returned.
-     *  @param  string string to be decoded 
-     *  @return the decoded string
+     * Decodes all escape sequences ({@code \b \t \n \f \r \" \' \\}), three
+     * bytes of octal escape sequences ({@code \000-\377}) and four bytes
+     * hexadecimal ({@code \u0000-\uFFFF}) after a backslash.
+     * The method works tollerant and keeps incorrect sequences.
+     * If {@code null} is passed, {@code null} is returned.
+     * @param  string string to be decoded 
+     * @return the decoded string
      */
     public static String unescape(String string) {
         
@@ -289,17 +289,17 @@ public class TextUtils {
     }
 
     /**
-     *  Encodes the control characters: BS, HT, LF, FF, CR, ', ", \ and all
-     *  characters outside the ASCII range 0x20-0x7F.
-     *  The escape uses:
-     *  <ul>
-     *    <li>slash + ISO</li>
-     *    <li>slash + three bytes octal (0x80-0xFF)</li>
-     *    <li>slash + four bytes hexadecimal (0x100-0xFFFF)</li>
-     *  </ul>
-     *  If {@code null} is passed, {@code null} is returned.
-     *  @param  string string to be escaped
-     *  @return the escaped string
+     * Encodes the control characters: BS, HT, LF, FF, CR, ', ", \ and all
+     * characters outside the ASCII range 0x20-0x7F.
+     * The escape uses:
+     * <ul>
+     *   <li>slash + ISO</li>
+     *   <li>slash + three bytes octal (0x80-0xFF)</li>
+     *   <li>slash + four bytes hexadecimal (0x100-0xFFFF)</li>
+     * </ul>
+     * If {@code null} is passed, {@code null} is returned.
+     * @param  string string to be escaped
+     * @return the escaped string
      */
     public static String escape(String string) {
         
@@ -350,12 +350,12 @@ public class TextUtils {
     }
     
     /**
-     *  Replaces characters case-insensitive in a string.
-     *  If {@code null} is passed, {@code null} is returned.
-     *  @param  string  string to search through
-     *  @param  search  search string
-     *  @param  replace string to be replaced
-     *  @return the replaced string
+     * Replaces characters case-insensitive in a string.
+     * If {@code null} is passed, {@code null} is returned.
+     * @param  string  string to search through
+     * @param  search  search string
+     * @param  replace string to be replaced
+     * @return the replaced string
      */
     public static String replace(String string, String search, String replace) {
 
@@ -391,10 +391,10 @@ public class TextUtils {
     }    
     
     /**
-     *  All control characters below ASCII 0x32 are escaped as ISO symbols.
-     *  If {@code null} is passed, {@code null} is returned.
-     *  @param  string string to decorate
-     *  @return der decorated string
+     * All control characters below ASCII 0x32 are escaped as ISO symbols.
+     * If {@code null} is passed, {@code null} is returned.
+     * @param  string string to decorate
+     * @return der decorated string
      */
     public static String decorate(String string) {
 
@@ -411,10 +411,10 @@ public class TextUtils {
     }
     
     /**
-     *  All ISO symbols of control characters below ASCII 0x32 are unescaped.
-     *  If {@code null} is passed, {@code null} is returned.
-     *  @param  string string to decorate
-     *  @return der decorated string
+     * All ISO symbols of control characters below ASCII 0x32 are unescaped.
+     * If {@code null} is passed, {@code null} is returned.
+     * @param  string string to decorate
+     * @return der decorated string
      */
     public static String undecorate(String string) {
 
@@ -431,23 +431,23 @@ public class TextUtils {
     }
     
     /**
-     *  Returns a string without any leading and trailing white spaces.
-     *  The value {@code null} becomes an empty string. 
-     *  @param  string string to be trimemd
-     *  @return string without any leading and trailing white spaces
+     * Returns a string without any leading and trailing white spaces.
+     * The value {@code null} becomes an empty string. 
+     * @param  string string to be trimemd
+     * @return string without any leading and trailing white spaces
      */ 
     public static String trim(String string) {
         return TextUtils.trim(string, false);
     }
     
     /**
-     *  Returns a string without any leading and trailing white spaces.
-     *  The value {@code null} becomes an empty string. If <i>nullable</i> is
-     *  {@code true}, {@code null} is returned if the string is empty.
-     *  @param  string   string to be trimemd
-     *  @param  nullable {@code true} returns {@code null} if string is empty
-     *  @return string without any leading and trailing white spaces
-     *          or {@code null} is used <i>nullable</i> and the string is empty
+     * Returns a string without any leading and trailing white spaces.
+     * The value {@code null} becomes an empty string. If <i>nullable</i> is
+     * {@code true}, {@code null} is returned if the string is empty.
+     * @param  string   string to be trimemd
+     * @param  nullable {@code true} returns {@code null} if string is empty
+     * @return string without any leading and trailing white spaces
+     *         or {@code null} is used <i>nullable</i> and the string is empty
      */     
     public static String trim(String string, boolean nullable) {
         
@@ -460,9 +460,9 @@ public class TextUtils {
     }
 
     /**
-     *  Natural sorting of strings with alphanumeric content.
-     *  @param  strings array to sort
-     *  @return natural sorted string
+     * Natural sorting of strings with alphanumeric content.
+     * @param  strings array to sort
+     * @return natural sorted string
      */
     public static String[] sortNatural(String... strings) {
         
@@ -478,9 +478,9 @@ public class TextUtils {
     private static class NaturalComparator implements Comparator<String> {
         
         /**
-         *  Normalizes the numeric fragments that they can be sorted.
-         *  @param  string string to be escaped
-         *  @return the normalized string
+         * Normalizes the numeric fragments that they can be sorted.
+         * @param  string string to be escaped
+         * @return the normalized string
          */
         private static String normalize(String string) {
             
